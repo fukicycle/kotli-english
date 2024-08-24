@@ -13,5 +13,7 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped<IFirebaseClientService, FirebaseClientService>();
 builder.Services.AddScoped<IWordRepository, WordRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IProgressRepository, ProgressRepository>();
 
 await builder.Build().RunAsync();

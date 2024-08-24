@@ -16,7 +16,7 @@ public sealed class UserRepository : IUserRepository
     }
     public async Task AddUserAsync(Users user)
     {
-        await _client.Child(SCHEME_NAME).PostAsync(user);
+        await _client.Child(SCHEME_NAME).Child(user.UserId).PutAsync(user);
     }
 
     public async Task DeleteUserByIdAsync(string userId)
@@ -29,8 +29,8 @@ public sealed class UserRepository : IUserRepository
         return await _client.Child(SCHEME_NAME).Child(userId).OnceSingleAsync<Users>();
     }
 
-    public async Task UpdateUserAsync(string userId, Users user)
+    public async Task UpdateUserAsync(Users user)
     {
-        await _client.Child(SCHEME_NAME).Child(userId).PutAsync(user);
+        await _client.Child(SCHEME_NAME).Child(user.UserId).PutAsync(user);
     }
 }
