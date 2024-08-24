@@ -25,7 +25,7 @@ public sealed class WordRepository : IWordRepository
         return await _client.Child(SCHEME_NAME).Child(wordId).OnceSingleAsync<Words>();
     }
 
-    public async Task<IEnumerable<Words>> GetWordsAsync()
+    public async Task<IEnumerable<Words>> GetWordListAsync()
     {
         IReadOnlyCollection<FirebaseObject<Words>> items =
             await _client.Child(SCHEME_NAME).OnceAsync<Words>();

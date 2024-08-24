@@ -23,7 +23,7 @@ public sealed class ProgressRepository : IProgressRepository
         return await _client.Child(SCHEME_NAME).Child(userId).Child(wordId).OnceSingleAsync<Progress>();
     }
 
-    public async Task<IEnumerable<Progress>> GetProgressByUserIdAsync(string userId)
+    public async Task<IEnumerable<Progress>> GetProgressListByUserIdAsync(string userId)
     {
         IReadOnlyCollection<FirebaseObject<Progress>> items =
             await _client.Child(SCHEME_NAME).Child(userId).OnceAsync<Progress>();
