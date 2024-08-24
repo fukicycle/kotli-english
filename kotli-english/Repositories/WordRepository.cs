@@ -15,10 +15,6 @@ public sealed class WordRepository : IWordRepository
     }
     public async Task AddWordAsync(Words words)
     {
-        if (words.WordId == Guid.Empty)
-        {
-            throw new ArgumentException("Please provide word id.");
-        }
         await _client.Child(SCHEME_NAME)
                      .Child(words.WordId.ToString())
                      .PutAsync(words);
