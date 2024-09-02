@@ -16,6 +16,9 @@ body {
     overflow: hidden;
     color: var(--color-white);
     background: linear-gradient(180deg, var(--color-primary-300) 0%, var(--color-primary-800) 100%);
+    padding-bottom: env(safe-area-inset-bottom);
+    touch-action: manipulation;
+    appearance: none;
 }
 
 :root {
@@ -40,4 +43,29 @@ body {
 .animation-container {
     height: 100%;
     overflow: auto;
+}
+
+.dialog-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+    background: rgba(242, 242, 242, 0.56);
+    backdrop-filter: blur(19.2px);
+}
+
+.dialog {
+    height: 100%;
+    width: 100%;
+    z-index: 200;
+    max-width: 90%;
+    max-height: 90%;
+    overflow: auto;
+    padding: var(--space-8);
 }
