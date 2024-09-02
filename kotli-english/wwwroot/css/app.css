@@ -19,6 +19,7 @@ body {
     padding-bottom: env(safe-area-inset-bottom);
     touch-action: manipulation;
     appearance: none;
+    -webkit-appearance: none;
 }
 
 :root {
