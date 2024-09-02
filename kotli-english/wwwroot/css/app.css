@@ -1,5 +1,43 @@
+/* default setting */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+    color: var(--color-white);
+    background: linear-gradient(180deg, var(--color-primary-300) 0%, var(--color-primary-800) 100%);
+}
+
+:root {
+    /* color setting */
+    --color-primary-800: #003366;
+    --color-primary-300: #0066CC;
+    --color-white: #F2F2F2;
+    --color-secondary-300: #DCE02E;
+    --color-secondary-400: #A0C044;
+    --color-secondary-500: #7A983D;
+    --color-secondary-600: #65803E;
+
+
+    /* space setting */
+    --space-4: 4px;
+    --space-8: 8px;
+    --space-16: 16px;
+    --space-32: 32px;
+}
+
+/* animation frame */
+.animation-container {
+    height: 100%;
+    overflow: auto;
 }
