@@ -59,6 +59,12 @@ body {
     padding-bottom: 10px;
     background: rgba(242, 242, 242, 0.56);
     backdrop-filter: blur(19.2px);
+
+    opacity: 0;
+    animation-name: fadein;
+    animation-duration: .1s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
 }
 
 .dialog {
@@ -69,4 +75,14 @@ body {
     max-height: 90%;
     overflow: auto;
     padding: var(--space-8);
+}
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
