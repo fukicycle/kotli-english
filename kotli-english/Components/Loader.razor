@@ -1,0 +1,21 @@
+﻿@if (IsFullscreen)
+{
+    <div class="loader-wrapper full">
+    <div class="loader"></div>
+    <div>@Message</div>
+</div>
+}
+else
+{
+    <div class="loader-wrapper part">
+    <div class="loader"></div>
+    <div>@Message</div>
+</div>
+}
+@code {
+    [Parameter]
+    public bool IsFullscreen { get; set; } = true;
+
+    [Parameter]
+    public string Message { get; set; } = "読み込み中...";
+}
