@@ -1,0 +1,7 @@
+.study {
+    height: 100%;
+    padding: var(--space-16);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
