@@ -1,7 +1,8 @@
 ﻿<div class="study">
     @if (_showAnswer)
     {
-        <Animate class="animation-container w-100" Animation="Animations.Fade" @onclick=@(() => _showAnswer = false)>
+        <Animate class="w-100 h-100" style="max-height: 560px;" Animation="Animations.Fade" @onclick=@(() => _showAnswer =
+        false)>
             <WordAnswerCard />
         </Animate>
     }
