@@ -1,0 +1,18 @@
+﻿<div class="study">
+    @if (_showAnswer)
+    {
+        <Animate class="animation-container w-100" Animation="Animations.Fade" @onclick=@(() => _showAnswer = false)>
+            <WordAnswerCard />
+        </Animate>
+    }
+    else
+    {
+        <Animate class="w-100" Animation="Animations.Fade" @onclick=@(() => _showAnswer = true)>
+            <WordCard />
+        </Animate>
+    }
+</div>
+
+@code {
+    private bool _showAnswer = false;
+}
