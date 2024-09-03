@@ -20,7 +20,7 @@ jobs:
 
       # Publish the site
       - name: Publish
-        run: dotnet publish kotli-english.csproj -p:GHPages=true -c:Release -o:public
+        run: dotnet publish kotli-english/kotli-english.csproj -p:GHPages=true -c:Release -o:public
 
       # Deploy the site
       - name: Deploy
