@@ -1,5 +1,5 @@
 ﻿<div class="dictionary-word-card">
-    <div class="part-of-speech">@Word.PartOfSpeech</div>
+    <div class="part-of-speech">@GetFirstChar(Word.PartOfSpeech)</div>
     <div class="word">
         <div class="en">@Word.Word</div>
         <div class="jp">@Word.Meaning</div>
@@ -22,4 +22,13 @@
 @code {
     [Parameter]
     public Words Word { get; set; } = null!;
+
+    private char GetFirstChar(string partOfSpeech)
+    {
+        if (string.IsNullOrEmpty(partOfSpeech))
+        {
+            return ' ';
+        }
+        return partOfSpeech.ToUpper().First();
+    }
 }

@@ -1,9 +1,8 @@
 .dictionary-word-card {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
     padding: var(--space-8);
-    gap: var(--space-8);
+    grid-gap: var(--space-8);
 
     width: 100%;
 
