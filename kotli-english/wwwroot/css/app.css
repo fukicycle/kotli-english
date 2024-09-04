@@ -23,7 +23,6 @@ body {
     color: var(--color-white);
     background: linear-gradient(180deg, var(--color-primary-300) 0%, var(--color-primary-800) 100%);
     padding-bottom: env(safe-area-inset-bottom);
-    padding-top: env(safe-area-inset-top);
     touch-action: manipulation;
     appearance: none;
     -webkit-appearance: none;
@@ -64,26 +63,26 @@ body {
     justify-content: center;
     align-items: center;
     padding-bottom: env(safe-area-inset-bottom);
-    padding-top: env(safe-area-inset-top);
-    background: rgba(242, 242, 242, 0.56);
-    backdrop-filter: blur(19.2px);
-    -webkit-backdrop-filter: blur(19.2px);
-
     opacity: 0;
     animation-name: fadein;
-    animation-duration: .1s;
+    animation-duration: .2s;
     animation-timing-function: ease-out;
     animation-fill-mode: forwards;
 }
 
 .dialog {
-    height: 100%;
-    width: 100%;
+    height: 95%;
+    width: 95%;
     z-index: 200;
-    max-width: 90%;
-    max-height: 90%;
     overflow: auto;
-    padding: var(--space-8);
+    padding: var(--space-32);
+
+    background: rgba(242, 242, 242, 0.56);
+    backdrop-filter: blur(19.2px);
+    -webkit-backdrop-filter: blur(19.2px);
+    border: solid 1px rgba(242, 242, 242, 0.56);
+    border-radius: var(--space-4);
+    box-shadow: 0 0 44px -4px var(--color-primary-800);
 }
 
 @keyframes fadein {
