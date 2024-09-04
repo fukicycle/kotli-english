@@ -4,9 +4,7 @@ using kotli_english.Repositories.Interfaces;
 using kotli_english.Services;
 using Microsoft.AspNetCore.Components;
 
-IWordRepository repository = new WordRepository(new FirebaseClientService());
-string csv1 = $@"word,meaning,part_of_speech,example_sentence,translation
-achievement,達成,noun,Winning the award was a significant achievement.,賞を受賞することは重要な達成でした。
+string csv1 = $@"achievement,達成,noun,Winning the award was a significant achievement.,賞を受賞することは重要な達成でした。
 agreement,協定、合意,noun,They reached an agreement after long negotiations.,長い交渉の末、彼らは合意に達しました。
 analysis,分析,noun,The analysis showed a significant increase in sales.,分析により、売上の大幅な増加が示されました。
 appointment,予約、任命,noun,I have a doctor's appointment tomorrow.,明日は医者の予約があります。
@@ -59,6 +57,7 @@ process,過程、プロセス,noun,The hiring process took longer than expected.
 
 async Task InsertAsync(string csv)
 {
+    IWordRepository repository = new WordRepository(new FirebaseClientService());
     string[] rows = csv.Split(Environment.NewLine);
     foreach (string row in rows)
     {
