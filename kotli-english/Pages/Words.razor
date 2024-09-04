@@ -1,5 +1,23 @@
 ﻿@page "/words"
+@inject IWordService WordService
 <PageTitle>Words</PageTitle>
 <Animate Animation="Animations.Fade" class="animation-container">
-    <h1>単語</h1>
+    <div class="wrapper">
+        <div>
+            <input class="search montserrat-400" type="search" />
+        </div>
+        <div class="list">
+            @if (_isWordListLoad)
+            {
+                <Loader Message="単語を読み込んでいます。" />
+            }
+            else
+            {
+                @foreach (var word in _wordList)
+                {
+                    <DictionaryWordCard Word="@word" />
+                }
+            }
+        </div>
+    </div>
 </Animate>

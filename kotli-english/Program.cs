@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using kotli_english;
+using kotli_english.Services.Interfaces;
 using kotli_english.Services;
 using kotli_english.Repositories.Interfaces;
 using kotli_english.Repositories;
@@ -15,5 +16,6 @@ builder.Services.AddScoped<IFirebaseClientService, FirebaseClientService>();
 builder.Services.AddScoped<IWordRepository, WordRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IProgressRepository, ProgressRepository>();
+builder.Services.AddScoped<IWordService, WordService>();
 
 await builder.Build().RunAsync();

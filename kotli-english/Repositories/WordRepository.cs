@@ -2,7 +2,7 @@ using Firebase.Database;
 using Firebase.Database.Query;
 using kotli_english.Entities.Schemes;
 using kotli_english.Repositories.Interfaces;
-using kotli_english.Services;
+using kotli_english.Services.Interfaces;
 
 namespace kotli_english.Repositories;
 public sealed class WordRepository : IWordRepository
