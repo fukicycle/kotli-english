@@ -1,0 +1,42 @@
+.dictionary-word-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: var(--space-8);
+    gap: var(--space-8);
+
+    width: 100%;
+
+    background: rgba(153, 204, 255, 0.33);
+    border: 1px solid rgba(153, 204, 255, 0.61);
+    backdrop-filter: blur(18.9px);
+    -webkit-backdrop-filter: blur(18.9px);
+    border-radius: var(--space-4);
+}
+
+.part-of-speech {
+    margin: auto;
+}
+
+.word {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-8);
+}
+
+.en {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.jp {
+    font-size: 16px;
+}
+
+button {
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
