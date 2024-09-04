@@ -6,6 +6,11 @@
     box-sizing: border-box;
 }
 
+button {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
 html,
 body,
 #app {
@@ -18,6 +23,7 @@ body {
     color: var(--color-white);
     background: linear-gradient(180deg, var(--color-primary-300) 0%, var(--color-primary-800) 100%);
     padding-bottom: env(safe-area-inset-bottom);
+    padding-top: env(safe-area-inset-top);
     touch-action: manipulation;
     appearance: none;
     -webkit-appearance: none;
@@ -57,7 +63,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-bottom: 10px;
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-top: env(safe-area-inset-top);
     background: rgba(242, 242, 242, 0.56);
     backdrop-filter: blur(19.2px);
     -webkit-backdrop-filter: blur(19.2px);
