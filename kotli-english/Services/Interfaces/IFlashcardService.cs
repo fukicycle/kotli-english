@@ -1,14 +1,19 @@
-using kotli_english.Entities.Models;
 using kotli_english.Entities.Schemes;
 
 namespace kotli_english.Services.Interfaces;
 
 public interface IFlashcardService
 {
+    int CurrentFlashcardNumber { get; }
+    int CurrentWordIndex { get; }
+    int NumberOfTotalFlascard { get; }
+    int NumberOfTotalWord { get; }
     void NextFlashcard();
     Words NextWord();
     bool CanGoNextWord();
     bool CanGoNextFlashcard();
     Task LoadAsync();
     Task SaveAsync();
+    Task ResetAsync();
+    void Response(bool isOk);
 }

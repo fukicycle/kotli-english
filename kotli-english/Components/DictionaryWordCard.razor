@@ -1,10 +1,11 @@
-﻿<div class="dictionary-word-card">
+﻿@inject SpeechSynthesis SpeechSynthesis
+<div class="dictionary-word-card">
     <div class="part-of-speech">@GetFirstChar(Word.PartOfSpeech)</div>
     <div class="word">
         <div class="en">@Word.Word</div>
         <div class="jp">@Word.Meaning</div>
     </div>
-    <button>
+    <button @onclick=@PlayButtonOnClick>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clip-path="url(#clip0_71_201)">
                 <path
@@ -30,5 +31,18 @@
             return ' ';
         }
         return partOfSpeech.ToUpper().First();
+    }
+
+    private async Task PlayButtonOnClick()
+    {
+        var utterancet = new SpeechSynthesisUtterance
+            {
+                Text = Word.Word,
+                Lang = "en-US", // BCP 47 language tag
+                Pitch = 0.3, // 0.0 ~ 2.0 (Default 1.0)
+                Rate = 1.1, // 0.1 ~ 10.0 (Default 1.0)
+                Volume = 1.0 // 0.0 ~ 1.0 (Default 1.0)
+            };
+        await SpeechSynthesis.SpeakAsync(utterancet);
     }
 }

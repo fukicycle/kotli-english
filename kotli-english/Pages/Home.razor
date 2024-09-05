@@ -1,22 +1,17 @@
 ﻿@page "/"
+@inject IUserService UserService
+@inject NavigationManager NavigationManager
 
 <PageTitle>Home</PageTitle>
 <Animate Animation="Animations.Fade" class="animation-container">
-    <h1>Hello, world!</h1>
-    <button @onclick=@(() => _status = true)>Click me</button>
+    @if (_user == null)
+    {
+        <Loader Message="ユーザ情報を確認しています" />
+    }
+    else
+    {
+        <div>@_user.UserId</div>
+        <div>@_user.Nickname</div>
+        <div>@_user.CurrentLevel</div>
+    }
 </Animate>
-@if (_status)
-{
-    <div class="dialog-background" @onclick=@(() => _status = false)>
-    <div class="dialog">
-        <h1>Hello, world!</h1>
-        Welcome to your new app.
-    </div>
-</div>
-}
-
-
-
-@code {
-    private bool _status = false;
-}

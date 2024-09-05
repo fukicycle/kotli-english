@@ -10,7 +10,7 @@
             else
             {
                 <Animate class="w-100" Animation="Animations.Fade">
-                    <WordCard Word="@_word.Word" PartOfSpeech="@_word.PartOfSpeech" NextButtonOnClick="WordCardOnClick" />
+                    <WordCard Word="@_word.Word" PartOfSpeech="@_word.PartOfSpeech" />
                 </Animate>
             }
             break;
@@ -20,7 +20,33 @@
             </Animate>
             break;
         case Entities.Models.StudyContentState.COMPLETE:
-            <div>今日の目標達成！</div>
+            @if (_isStoreProgress)
+            {
+                <Loader Message="結果を保存中" />
+            }
+            else
+            {
+                <div>今日の目標達成！</div>
+            }
             break;
+    }
+    @if (_currentState == Entities.Models.StudyContentState.QUESTION)
+    {
+        <div class="next">
+            <button @onclick=WordCardOnClick>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_96_277)">
+                        <path
+                            d="M15.9531 8L8.60156 15.3516L7.89844 14.6484L14.0469 8.5H0V7.5H14.0469L7.89844 1.35156L8.60156 0.648438L15.9531 8Z"
+                            fill="#F2F2F2" />
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_96_277">
+                            <rect width="16" height="16" fill="white" />
+                        </clipPath>
+                    </defs>
+                </svg>
+            </button>
+        </div>
     }
 </div>

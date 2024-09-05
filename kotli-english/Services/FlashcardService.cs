@@ -11,18 +11,28 @@ public sealed class FlashcardService : IFlashcardService
     private const string STORAGE_KEY = "995a2dde-8469-466d-992c-a04087537318_Flashcard_Settigns";
     private readonly IWordRepository _wordRepository;
     private readonly ILocalStorageService _localStorageService;
+    private readonly IProgressRepository _progressRepository;
     private readonly ILogger<FlashcardService> _logger;
     private readonly List<Flashcard> _flashcardList = new List<Flashcard>();
-    private int _currentIndex = 0;
-    private int _currentNumber = 1;
+    private readonly List<WordUserResponse> _userResponse = new List<WordUserResponse>();
+    private readonly IUserService _userService;
+    public int CurrentWordIndex { get; private set; } = 0;
+    public int CurrentFlashcardNumber { get; private set; } = 1;
+    public int NumberOfTotalFlascard { get; private set; } = 1;
+    public int NumberOfTotalWord { get; private set; }
     private Flashcard? _currentFlashcard = null;
+    private Words? _currentWord = null;
     public FlashcardService(
         IWordRepository wordRepository,
         ILocalStorageService localStorageService,
+        IProgressRepository progressRepository,
+        IUserService userService,
         ILogger<FlashcardService> logger)
     {
         _wordRepository = wordRepository;
         _localStorageService = localStorageService;
+        _progressRepository = progressRepository;
+        _userService = userService;
         _logger = logger;
     }
 
@@ -32,7 +42,7 @@ public sealed class FlashcardService : IFlashcardService
         {
             return false;
         }
-        if (!_flashcardList.Any(a => a.Number == _currentNumber + 1))
+        if (!_flashcardList.Any(a => a.Number == CurrentFlashcardNumber + 1))
         {
             return false;
         }
@@ -45,7 +55,7 @@ public sealed class FlashcardService : IFlashcardService
         {
             return false;
         }
-        if (_currentFlashcard.WordList.Count <= _currentIndex + 1)
+        if (_currentFlashcard.WordList.Count < CurrentWordIndex + 1)
         {
             return false;
         }
@@ -54,8 +64,8 @@ public sealed class FlashcardService : IFlashcardService
 
     private async Task GenerateAsync()
     {
-        _currentIndex = 0;
-        _currentNumber = 1;
+        CurrentWordIndex = 0;
+        CurrentFlashcardNumber = 1;
         IEnumerable<Words> wordList = await _wordRepository.GetWordListAsync();
         List<Words> randomList = wordList.OrderBy(a => Random.Shared.Next()).ToList();
         int number = 1;
@@ -69,7 +79,7 @@ public sealed class FlashcardService : IFlashcardService
                 _logger.LogInformation("Added and removed. {0}, remain: {1}", item.Word, randomList.Count);
             }
         }
-        FlashcardSettings flashcardSettings = new FlashcardSettings(_currentNumber, _flashcardList);
+        FlashcardSettings flashcardSettings = new FlashcardSettings(CurrentFlashcardNumber, _flashcardList);
         await _localStorageService.SetItemAsync(STORAGE_KEY, flashcardSettings);
     }
 
@@ -82,14 +92,16 @@ public sealed class FlashcardService : IFlashcardService
         }
         else
         {
-            _currentNumber = flashcardSettings.CurrentNumber;
-            _currentIndex = 0;
+            CurrentFlashcardNumber = flashcardSettings.CurrentNumber;
+            CurrentWordIndex = 0;
             _flashcardList.AddRange(flashcardSettings.FlashcardList);
         }
         if (CanGoNextFlashcard())
         {
             NextFlashcard();
         }
+        NumberOfTotalFlascard = _flashcardList.Count;
+        NumberOfTotalWord = _flashcardList.Sum(a => a.WordList.Count);
     }
 
     public void NextFlashcard()
@@ -98,8 +110,8 @@ public sealed class FlashcardService : IFlashcardService
         {
             throw new Exception("Flash card list is empty.");
         }
-        _currentFlashcard = _flashcardList.First(a => a.Number == _currentNumber);
-        _currentNumber++;
+        _currentFlashcard = _flashcardList.First(a => a.Number == CurrentFlashcardNumber);
+        CurrentFlashcardNumber++;
     }
 
     public Words NextWord()
@@ -108,9 +120,9 @@ public sealed class FlashcardService : IFlashcardService
         {
             throw new Exception("Current flash card is null.");
         }
-        Words word = _currentFlashcard.WordList[_currentIndex];
-        _currentIndex++;
-        return word;
+        _currentWord = _currentFlashcard.WordList[CurrentWordIndex];
+        CurrentWordIndex++;
+        return _currentWord;
     }
 
     public async Task SaveAsync()
@@ -119,9 +131,56 @@ public sealed class FlashcardService : IFlashcardService
         {
             throw new Exception("Current flash card is null.");
         }
-        _currentNumber++;
-        FlashcardSettings flashcardSettings = new FlashcardSettings(_currentNumber, _flashcardList);
+        CurrentFlashcardNumber++;
+        FlashcardSettings flashcardSettings = new FlashcardSettings(CurrentFlashcardNumber, _flashcardList);
         await _localStorageService.SetItemAsync(STORAGE_KEY, flashcardSettings);
-        // _currentFlashcard.WordList;
+        IEnumerable<Progress> progressList = await _progressRepository.GetProgressListByUserIdAsync(_userService.UserId);
+        foreach (var response in _userResponse)
+        {
+            Progress? progress = progressList.FirstOrDefault(a => a.WordId == response.Word.WordId);
+            int ok = 0;
+            int ng = 0;
+            if (progress == default)
+            {
+                if (response.IsOk)
+                {
+                    ok = 1;
+                }
+                else
+                {
+                    ng = 1;
+                }
+                progress = new Progress(response.Word.WordId, DateTime.Now, ok, ng, 1);
+            }
+            else
+            {
+                ok = progress.CorrectResponses;
+                ng = progress.IncorrectResponses;
+                int master = progress.MasteryLevel;
+                if (ok % 3 == 0)
+                {
+                    master++;
+                }
+                progress = new Progress(response.Word.WordId, DateTime.Now, ok, ng, master);
+            }
+            await _progressRepository.AddProgressAsync(_userService.UserId, progress);
+        }
+    }
+
+    public async Task ResetAsync()
+    {
+        _flashcardList.Clear();
+        _userResponse.Clear();
+        await _localStorageService.RemoveItemAsync(STORAGE_KEY);
+        await GenerateAsync();
+    }
+
+    public void Response(bool isOk)
+    {
+        if (_currentWord == null)
+        {
+            throw new Exception("Current word is null.");
+        }
+        _userResponse.Add(new WordUserResponse(isOk, _currentWord));
     }
 }

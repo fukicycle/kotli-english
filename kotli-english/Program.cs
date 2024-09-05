@@ -23,5 +23,6 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IProgressRepository, ProgressRepository>();
 builder.Services.AddScoped<IWordService, WordService>();
 builder.Services.AddScoped<IFlashcardService, FlashcardService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 await builder.Build().RunAsync();
