@@ -1,5 +1,17 @@
 ﻿@page "/"
+@inject IUserService UserService
+@inject NavigationManager NavigationManager
 
 <PageTitle>Home</PageTitle>
 <Animate Animation="Animations.Fade" class="animation-container">
+    @if (_user == null)
+    {
+        <Loader Message="ユーザ情報を確認しています" />
+    }
+    else
+    {
+        <div>@_user.UserId</div>
+        <div>@_user.Nickname</div>
+        <div>@_user.CurrentLevel</div>
+    }
 </Animate>

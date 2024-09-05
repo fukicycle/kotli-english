@@ -8,7 +8,6 @@ namespace kotli_english.Services;
 
 public sealed class FlashcardService : IFlashcardService
 {
-    private readonly Guid USER_ID = Guid.Parse("50072a35-6596-43f5-9d74-7a934fb644fc"); //hard coding;
     private const string STORAGE_KEY = "995a2dde-8469-466d-992c-a04087537318_Flashcard_Settigns";
     private readonly IWordRepository _wordRepository;
     private readonly ILocalStorageService _localStorageService;
@@ -16,6 +15,7 @@ public sealed class FlashcardService : IFlashcardService
     private readonly ILogger<FlashcardService> _logger;
     private readonly List<Flashcard> _flashcardList = new List<Flashcard>();
     private readonly List<WordUserResponse> _userResponse = new List<WordUserResponse>();
+    private readonly IUserService _userService;
     public int CurrentWordIndex { get; private set; } = 0;
     public int CurrentFlashcardNumber { get; private set; } = 1;
     public int NumberOfTotalFlascard { get; private set; } = 1;
@@ -26,11 +26,13 @@ public sealed class FlashcardService : IFlashcardService
         IWordRepository wordRepository,
         ILocalStorageService localStorageService,
         IProgressRepository progressRepository,
+        IUserService userService,
         ILogger<FlashcardService> logger)
     {
         _wordRepository = wordRepository;
         _localStorageService = localStorageService;
         _progressRepository = progressRepository;
+        _userService = userService;
         _logger = logger;
     }
 
@@ -134,7 +136,7 @@ public sealed class FlashcardService : IFlashcardService
         await _localStorageService.SetItemAsync(STORAGE_KEY, flashcardSettings);
         foreach (var response in _userResponse)
         {
-            Progress? progress = await _progressRepository.GetProgressByUserIdAndWordIdAsync(USER_ID, response.Word.WordId);
+            Progress? progress = await _progressRepository.GetProgressByUserIdAndWordIdAsync(_userService.UserId, response.Word.WordId);
             int ok = 0;
             int ng = 0;
             if (progress == default)
@@ -156,7 +158,7 @@ public sealed class FlashcardService : IFlashcardService
                 }
                 progress = new Progress(response.Word.WordId, DateTime.Now, ok, ng, master);
             }
-            await _progressRepository.AddProgressAsync(USER_ID, progress);
+            await _progressRepository.AddProgressAsync(_userService.UserId, progress);
         }
     }
 
