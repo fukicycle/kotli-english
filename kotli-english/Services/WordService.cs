@@ -18,7 +18,8 @@ public sealed class WordService : IWordService
     {
         try
         {
-            return await _wordRepository.GetWordListAsync();
+            IEnumerable<Words> wordList = await _wordRepository.GetWordListAsync();
+            return wordList.OrderBy(a => a.PartOfSpeech).ThenBy(a => a.Word).ToList();
         }
         catch (Exception ex)
         {
