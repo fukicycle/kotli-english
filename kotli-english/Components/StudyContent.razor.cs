@@ -12,7 +12,7 @@ public partial class StudyContent
 
     protected override async Task OnInitializedAsync()
     {
-        await FlashcardService.LoadAsync();
+        await Task.Run(async () => await FlashcardService.LoadAsync());
         if (FlashcardService.CanGoNextWord())
         {
             _word = FlashcardService.NextWord();
@@ -36,7 +36,7 @@ public partial class StudyContent
         {
             _currentState = StudyContentState.COMPLETE;
             _isStoreProgress = true;
-            await FlashcardService.SaveAsync();
+            await Task.Run(async () => await FlashcardService.SaveAsync());
             _isStoreProgress = false;
         }
     }

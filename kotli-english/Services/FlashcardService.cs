@@ -55,7 +55,7 @@ public sealed class FlashcardService : IFlashcardService
         {
             return false;
         }
-        if (_currentFlashcard.WordList.Count <= CurrentWordIndex + 1)
+        if (_currentFlashcard.WordList.Count < CurrentWordIndex + 1)
         {
             return false;
         }
@@ -134,9 +134,10 @@ public sealed class FlashcardService : IFlashcardService
         CurrentFlashcardNumber++;
         FlashcardSettings flashcardSettings = new FlashcardSettings(CurrentFlashcardNumber, _flashcardList);
         await _localStorageService.SetItemAsync(STORAGE_KEY, flashcardSettings);
+        IEnumerable<Progress> progressList = await _progressRepository.GetProgressListByUserIdAsync(_userService.UserId);
         foreach (var response in _userResponse)
         {
-            Progress? progress = await _progressRepository.GetProgressByUserIdAndWordIdAsync(_userService.UserId, response.Word.WordId);
+            Progress? progress = progressList.FirstOrDefault(a => a.WordId == response.Word.WordId);
             int ok = 0;
             int ng = 0;
             if (progress == default)
@@ -144,6 +145,10 @@ public sealed class FlashcardService : IFlashcardService
                 if (response.IsOk)
                 {
                     ok = 1;
+                }
+                else
+                {
+                    ng = 1;
                 }
                 progress = new Progress(response.Word.WordId, DateTime.Now, ok, ng, 1);
             }
