@@ -790,6 +790,151 @@ educate,教育する,verb,The program educates employees on new procedures,プ�
 implement,実施する,verb,We implemented the new guidelines in the department,私たちは部門で新しいガイドラインを実施した
 instruct,指示する,verb,The manager instructed the team on the new protocol,マネージャーはチームに新しいプロトコルについて指示した
 interact,相互作用する,verb,The software interacts with various databases,ソフトウェアはさまざまなデータベースと相互作用する";
+string csv17 = $@"abundant,豊富な,adjective,There is an abundant supply of resources,資源の供給が豊富です
+accurate,正確な,adjective,The report provides accurate information,その報告書は正確な情報を提供している
+adequate,適切な,adjective,We have adequate resources for the project,プロジェクトには適切な資源がある
+brief,簡潔な,adjective,Please give a brief summary of the report,報告書の簡潔な概要を述べてください
+crucial,非常に重要な,adjective,It is crucial to follow the guidelines,ガイドラインに従うことが非常に重要です
+efficient,効率的な,adjective,The new system is more efficient than the old one,新しいシステムは古いものより効率的です
+frequently,頻繁に,adverb,He frequently visits the office,彼は頻繁にオフィスを訪れる
+gradually,徐々に,adverb,The company is gradually expanding its operations,会社は徐々に業務を拡大している
+immediately,直ちに,adverb,Please respond to the email immediately,メールには直ちに返信してください
+occasionally,時折,adverb,We occasionally hold meetings off-site,時折、オフサイトで会議を開催する
+potentially,潜在的に,adverb,This decision could potentially affect future profits,この決定は潜在的に将来の利益に影響を与える可能性がある
+rarely,めったに～しない,adverb,He rarely takes a day off,彼はめったに休みを取らない
+significantly,著しく,adverb,Profits have significantly increased this quarter,今四半期の利益は著しく増加した
+temporarily,一時的に,adverb,The service is temporarily unavailable,サービスは一時的に利用できません
+thoroughly,徹底的に,adverb,Please check the report thoroughly before submission,提出前に報告書を徹底的に確認してください
+vastly,非常に,adverb,The new software is vastly superior to the old one,新しいソフトウェアは古いものより非常に優れている
+promptly,迅速に,adverb,Please respond promptly to any inquiries,どの問い合わせにも迅速に対応してください
+effectively,効果的に,adverb,The team worked effectively under pressure,チームはプレッシャーの中で効果的に働いた
+appropriately,適切に,adverb,Ensure that the issue is handled appropriately,問題が適切に対処されることを確認してください
+partially,部分的に,adverb,The plan was only partially successful,計画は部分的にしか成功しなかった
+reliable,信頼できる,adjective,He is a reliable employee,彼は信頼できる社員だ
+sufficient,十分な,adjective,We have sufficient funds for the project,プロジェクトに十分な資金がある
+urgent,緊急の,adjective,There is an urgent need for more staff,もっと多くのスタッフが緊急に必要だ
+consistent,一貫した,adjective,Her performance has been consistent throughout the year,彼女のパフォーマンスは1年を通して一貫していた
+flexible,柔軟な,adjective,We need a more flexible schedule,より柔軟なスケジュールが必要です
+capable,有能な,adjective,She is capable of handling multiple tasks,彼女は複数のタスクを処理する能力がある
+considerable,かなりの,adjective,There is considerable interest in the new product,新製品にかなりの関心がある
+controversial,議論を呼ぶ,adjective,The decision was highly controversial,その決定は非常に議論を呼んだ
+efficiently,効率的に,adverb,He completed the task efficiently,彼はそのタスクを効率的に完了した
+heavily,大いに,adverb,The company relies heavily on its marketing team,会社はマーケティングチームに大いに依存している
+steadily,着実に,adverb,The company has been growing steadily,会社は着実に成長している
+barely,ほとんど～ない,adverb,He barely passed the exam,彼はぎりぎりで試験に合格した
+clearly,明確に,adverb,Please explain your point clearly,明確にポイントを説明してください
+correctly,正しく,adverb,Make sure to follow the instructions correctly,指示に正しく従ってください
+enthusiastically,熱心に,adverb,She enthusiastically participated in the event,彼女はそのイベントに熱心に参加した
+eagerly,熱心に,adverb,They eagerly awaited the results,彼らは結果を熱心に待っていた
+remarkably,著しく,adverb,The new policy has worked remarkably well,新しい方針は著しくうまく機能した
+safely,安全に,adverb,He returned home safely after the trip,彼は旅行後、安全に帰宅した
+widely,広く,adverb,The product is widely used across the industry,その製品は業界全体で広く使用されている
+bare,むき出しの,adjective,He walked on the bare ground without shoes,彼は靴を履かずにむき出しの地面を歩いた
+efficient,効率的な,adjective,This method is more efficient than the old one,この方法は古いものよりも効率的だ
+limited,限られた,adjective,We have limited resources for this project,このプロジェクトには限られた資源しかない
+necessary,必要な,adjective,It is necessary to complete this form,このフォームを完成させることが必要です
+overall,全体的な,adjective,The overall performance of the team was good,チームの全体的なパフォーマンスは良好だった
+positive,肯定的な,adjective,The feedback from the clients was positive,クライアントからのフィードバックは肯定的だった
+unique,独特の,adjective,Each product has its own unique feature,それぞれの製品には独自の特徴がある
+primary,主要な,adjective,The primary goal of the project is customer satisfaction,プロジェクトの主要な目標は顧客満足だ
+complex,複雑な,adjective,The system is too complex for beginners,そのシステムは初心者には複雑すぎる";
+string csv18 = $@"accurately,正確に,adverb,She accurately measured the dimensions of the room,彼女は部屋の寸法を正確に測った
+carefully,慎重に,adverb,Please read the instructions carefully,指示を慎重に読んでください
+distinctly,はっきりと,adverb,He spoke distinctly during the presentation,彼はプレゼンテーション中にはっきりと話した
+gradual,徐々の,adjective,There was a gradual improvement in the quality,品質に徐々に改善が見られた
+initially,最初は,adverb,We initially thought the project would take a month,最初はプロジェクトが1ヶ月かかると思っていた
+legally,合法的に,adverb,The contract was legally binding,その契約は法的に拘束力があった
+mainly,主に,adverb,The team mainly focuses on software development,チームは主にソフトウェア開発に注力している
+remarkable,注目すべき,adjective,Her performance was remarkable,彼女のパフォーマンスは注目に値する
+swiftly,迅速に,adverb,The issue was resolved swiftly,問題は迅速に解決された
+thorough,徹底的な,adjective,We conducted a thorough investigation,徹底的な調査を行った
+vividly,鮮明に,adverb,She vividly described her experience,彼女は自分の経験を鮮明に語った
+loosely,ゆるやかに,adverb,The policy is loosely enforced,その方針はゆるやかに適用されている
+reliable,信頼できる,adjective,He is a reliable source of information,彼は信頼できる情報源だ
+visible,目に見える,adjective,The results were clearly visible,結果ははっきりと見えた
+constantly,絶えず,adverb,He constantly checks his email,彼は絶えずメールを確認している
+briefly,簡潔に,adverb,The meeting briefly covered the main topics,会議では簡潔に主要なトピックが取り上げられた
+deeply,深く,adverb,She was deeply involved in the project,彼女はプロジェクトに深く関わっていた
+frequent,頻繁な,adjective,His frequent absences caused concern,彼の頻繁な欠席が心配を招いた
+impressive,印象的な,adjective,The presentation was impressive,プレゼンテーションは印象的だった
+logically,論理的に,adverb,He explained the process logically,彼はそのプロセスを論理的に説明した
+mostly,大部分は,adverb,The team is mostly composed of engineers,チームの大部分はエンジニアで構成されている
+neatly,きちんと,adverb,The documents were neatly organized,書類はきちんと整理されていた
+occasionally,時折,adverb,We occasionally meet to discuss progress,私たちは時折進捗を話し合うために会う
+rapidly,急速に,adverb,The company is growing rapidly,会社は急速に成長している
+seldom,めったに～しない,adverb,He seldom takes breaks during work,彼は仕事中にめったに休憩を取らない
+strongly,強く,adverb,I strongly recommend this course,このコースを強くお勧めします
+adequately,適切に,adverb,The problem was adequately addressed,問題は適切に対処された
+essentially,本質的に,adverb,The plan is essentially the same as before,計画は本質的に以前と同じです
+heavily,大いに,adverb,The project relied heavily on external funding,プロジェクトは大いに外部資金に依存していた
+repeatedly,繰り返し,adverb,He repeatedly asked for clarification,彼は繰り返し説明を求めた
+primarily,主に,adverb,The product is primarily designed for professionals,この製品は主にプロフェッショナル向けに設計されている
+barely,かろうじて,adverb,She barely finished the project on time,彼女はかろうじてプロジェクトを期日内に終えた
+closely,密接に,adverb,We worked closely with the development team,私たちは開発チームと密接に協力した
+precisely,正確に,adverb,The instructions were followed precisely,指示は正確に守られた
+fully,完全に,adverb,The system is now fully operational,システムは現在完全に稼働している
+widely,広く,adverb,The new policy was widely accepted,新しい方針は広く受け入れられた
+promptly,すぐに,adverb,He promptly responded to the email,彼はすぐにメールに返信した
+naturally,自然に,adverb,She naturally took the lead in the discussion,彼女は自然に議論のリーダーシップを取った
+rarely,めったに～ない,adverb,They rarely discuss personal matters at work,彼らは仕事中にめったに個人的なことを話さない
+severely,厳しく,adverb,The team was severely criticized for the delay,チームは遅れのために厳しく批判された
+universally,普遍的に,adverb,The decision was universally supported,その決定は普遍的に支持された
+brief,短い,adjective,She gave a brief overview of the project,彼女はプロジェクトの短い概要を説明した
+dense,密集した,adjective,The forest was dense with trees,その森は木々で密集していた
+final,最終の,adjective,This is the final version of the report,これが報告書の最終版です
+immediate,即時の,adjective,We need an immediate response to the issue,この問題に対する即時の対応が必要です
+overall,全体的な,adjective,The overall performance of the team was satisfactory,チームの全体的なパフォーマンスは満足のいくものでした
+significant,重要な,adjective,This is a significant improvement over the last version,これは前のバージョンよりも大きな改善です
+temporary,一時的な,adjective,The temporary solution worked for now,一時的な解決策は今のところうまくいった";
+string csv19 = $@"approximately,おおよそ,adverb,The meeting will last approximately two hours,会議はおおよそ2時間続く
+broadly,広範に,adverb,The changes were broadly accepted,その変更は広範に受け入れられた
+commonly,一般的に,adverb,This issue is commonly seen in new projects,この問題は新しいプロジェクトでよく見られる
+deliberately,意図的に,adverb,He deliberately ignored the question,彼は意図的にその質問を無視した
+distinctly,明確に,adverb,She distinctly remembered the conversation,彼女はその会話を明確に覚えていた
+efficiently,効率的に,adverb,The system is designed to work efficiently,このシステムは効率的に動作するよう設計されている
+generally,一般的に,adverb,The product is generally well received,この製品は一般的に好評だ
+inevitably,必然的に,adverb,The project will inevitably face challenges,このプロジェクトは必然的に困難に直面する
+modestly,控えめに,adverb,He modestly accepted the award,彼は控えめにその賞を受け取った
+plainly,はっきりと,adverb,She spoke plainly about her concerns,彼女は自分の懸念についてはっきりと話した
+reluctantly,渋々,adverb,He reluctantly agreed to the proposal,彼は渋々その提案に同意した
+seriously,真剣に,adverb,You need to take this issue seriously,この問題を真剣に捉える必要がある
+steadily,着実に,adverb,The team steadily improved their performance,チームは着実にパフォーマンスを向上させた
+substantially,大幅に,adverb,The budget has been substantially increased,予算は大幅に増加した
+vaguely,漠然と,adverb,He vaguely remembered the details,彼はその詳細を漠然と覚えていた
+widely,広く,adverb,The software is widely used in the industry,そのソフトウェアは業界で広く使用されている
+suddenly,突然,adverb,The system suddenly stopped working,システムは突然動作を停止した
+accurate,正確な,adjective,The data provided is accurate,提供されたデータは正確だ
+automatic,自動の,adjective,This is an automatic response system,これは自動応答システムです
+brilliant,素晴らしい,adjective,She gave a brilliant presentation,彼女は素晴らしいプレゼンテーションを行った
+comprehensive,包括的な,adjective,We need a comprehensive review of the project,プロジェクトの包括的なレビューが必要だ
+delicate,繊細な,adjective,This is a delicate issue that needs careful handling,これは慎重に扱うべき繊細な問題だ
+efficient,効率的な,adjective,The new system is more efficient than the old one,新しいシステムは古いものより効率的だ
+frequent,頻繁な,adjective,He makes frequent visits to the office,彼は頻繁にオフィスを訪れる
+genuine,本物の,adjective,She gave a genuine apology for her mistake,彼女は自分の過ちについて本気の謝罪をした
+immediate,即時の,adjective,We need immediate action to resolve this issue,この問題を解決するためには即時の対応が必要だ
+notable,注目すべき,adjective,Her notable achievements were recognized at the ceremony,彼女の注目すべき成果が式典で認められた
+prominent,著名な,adjective,He is a prominent figure in the industry,彼は業界で著名な人物だ
+reliable,信頼できる,adjective,This data is from a reliable source,このデータは信頼できる情報源からのものだ
+sufficient,十分な,adjective,We have sufficient resources to complete the project,プロジェクトを完了するのに十分な資源がある
+urgent,緊急の,adjective,There is an urgent need for more staff,もっと多くのスタッフが緊急に必要だ
+appropriate,適切な,adjective,This is the appropriate response to the situation,これは状況に対する適切な対応だ
+capable,有能な,adjective,She is capable of leading the team,彼女はチームを率いる能力がある
+consistent,一貫した,adjective,His performance has been consistent over the past year,彼のパフォーマンスは過去1年間で一貫していた
+diverse,多様な,adjective,We have a diverse range of products,我々には多様な製品のラインナップがある
+extensive,広範囲の,adjective,The report provided extensive details about the project,その報告書はプロジェクトについて広範な詳細を提供した
+ideal,理想的な,adjective,This is the ideal solution for our needs,これは我々のニーズにとって理想的な解決策だ
+innovative,革新的な,adjective,The company is known for its innovative products,その会社は革新的な製品で知られている
+logical,論理的な,adjective,His explanation was clear and logical,彼の説明は明快で論理的だった
+meaningful,意味のある,adjective,We had a meaningful discussion about the future,我々は将来について意味のある議論をした
+precise,正確な,adjective,We need precise measurements for this project,このプロジェクトには正確な測定が必要だ
+substantial,かなりの,adjective,We made substantial progress on the project,プロジェクトはかなり進展した
+temporary,一時的な,adjective,This is just a temporary solution,これは一時的な解決策に過ぎない
+ultimate,究極の,adjective,The ultimate goal is to increase customer satisfaction,最終目標は顧客満足度を向上させることだ
+visible,目に見える,adjective,The results were clearly visible,結果ははっきりと見えた
+gradually,徐々に,adverb,The company is gradually improving its processes,会社は徐々にプロセスを改善している
+briefly,簡潔に,adverb,He briefly mentioned the main points,彼は簡潔に主要なポイントを述べた
+completely,完全に,adverb,The task was completely finished on time,タスクは時間内に完全に完了した
+neatly,きちんと,adverb,The documents were neatly organized,書類はきちんと整理されていた";
 // await InsertAsync(csv1);
 // await InsertAsync(csv2);
 // await InsertAsync(csv3);
@@ -806,7 +951,17 @@ interact,相互作用する,verb,The software interacts with various databases,�
 // await InsertAsync(csv14);
 // await InsertAsync(csv15);
 // await InsertAsync(csv16);
-await DeleteDuplicateAsync();
+// await InsertAsync(csv17);
+// await InsertAsync(csv18);
+// await InsertAsync(csv19);
+// await DeleteDuplicateAsync();
+
+IUserRepository repo = new UserRepository(new FirebaseClientService());
+string id = "50072a35-6596-43f5-9d74-7a934fb644fc";
+// await repo.AddUserAsync(new Users(id, DateTime.Now, "hoge", 2, Enumerable.Empty<Progress>().ToList()));
+IProgressRepository pro = new ProgressRepository(new FirebaseClientService(), repo);
+var hgoe = await pro.GetProgressListByUserIdAsync(Guid.Parse(id));
+Console.WriteLine(string.Join(",", hgoe.Select(a => a.WordId)));
 
 async Task InsertAsync(string csv)
 {
