@@ -31,6 +31,7 @@ section {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: minmax(0, 1fr) auto;
+    grid-gap: var(--space-4);
 }
 
 .word-jp {
@@ -58,11 +59,15 @@ section {
     font-weight: 600;
 }
 
+.examples {
+    display: grid;
+    grid-template-rows: minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-gap: var(--space-4);
+}
+
 .caption {
     font-size: 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .sentence {
@@ -82,6 +87,7 @@ section {
 }
 
 button {
+    margin: auto;
     outline: none;
     border: none;
     background-color: transparent;

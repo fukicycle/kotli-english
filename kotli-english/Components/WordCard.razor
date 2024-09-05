@@ -16,21 +16,6 @@
         </svg>
     </button>
     <div class="part-of-speech">@PartOfSpeech</div>
-    <button class="next" @onclick=NextButtonOnClick>
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g clip-path="url(#clip0_96_277)">
-                <path
-                    d="M15.9531 8L8.60156 15.3516L7.89844 14.6484L14.0469 8.5H0V7.5H14.0469L7.89844 1.35156L8.60156 0.648438L15.9531 8Z"
-                    fill="#F2F2F2" />
-            </g>
-            <defs>
-                <clipPath id="clip0_96_277">
-                    <rect width="16" height="16" fill="white" />
-                </clipPath>
-            </defs>
-        </svg>
-
-    </button>
 </div>
 @code {
     [Parameter]
@@ -38,19 +23,17 @@
 
     [Parameter]
     public string PartOfSpeech { get; set; } = nameof(PartOfSpeech);
-    [Parameter]
-    public EventCallback NextButtonOnClick { get; set; }
 
     private async Task PlayButtonOnClick()
     {
         var utterancet = new SpeechSynthesisUtterance
-            {
-                Text = Word,
-                Lang = "en-US", // BCP 47 language tag
-                Pitch = 1.0, // 0.0 ~ 2.0 (Default 1.0)
-                Rate = 1.0, // 0.1 ~ 10.0 (Default 1.0)
-                Volume = 1.0 // 0.0 ~ 1.0 (Default 1.0)
-            };
+        {
+            Text = Word,
+            Lang = "en-US", // BCP 47 language tag
+            Pitch = 0.3, // 0.0 ~ 2.0 (Default 1.0)
+            Rate = 1.1, // 0.1 ~ 10.0 (Default 1.0)
+            Volume = 1.0 // 0.0 ~ 1.0 (Default 1.0)
+        };
         await SpeechSynthesis.SpeakAsync(utterancet);
     }
 }

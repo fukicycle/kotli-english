@@ -6,3 +6,28 @@
     justify-content: center;
     align-items: center;
 }
+
+.next {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    bottom: var(--space-16);
+}
+
+button {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 60px;
+    height: 60px;
+
+    background: rgba(242, 242, 242, 0.33);
+    border: 1px solid rgba(242, 242, 242, 0.61);
+    backdrop-filter: blur(18.9px);
+    -webkit-backdrop-filter: blur(18.9px);
+    border-radius: 30px;
+
+}
