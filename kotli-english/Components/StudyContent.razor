@@ -20,7 +20,14 @@
             </Animate>
             break;
         case Entities.Models.StudyContentState.COMPLETE:
-            <div>今日の目標達成！</div>
+            @if (_isStoreProgress)
+            {
+                <Loader Message="結果を保存中" />
+            }
+            else
+            {
+                <div>今日の目標達成！</div>
+            }
             break;
     }
     @if (_currentState == Entities.Models.StudyContentState.QUESTION)

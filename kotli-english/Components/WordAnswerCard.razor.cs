@@ -9,16 +9,16 @@ public partial class WordAnswerCard
     [Parameter]
     public Words Word { get; set; } = new Words(Guid.NewGuid(), "Word", "単語", "Noun", "I like this word.", "私はこの単語が好きです。");
     [Parameter]
-    public EventCallback ResultOnClick { get; set; }
+    public EventCallback<bool> ResultOnClick { get; set; }
 
     private async Task OkButtonOnClick()
     {
-        await ResultOnClick.InvokeAsync();
+        await ResultOnClick.InvokeAsync(true);
     }
 
     private async Task NGButtonOnClick()
     {
-        await ResultOnClick.InvokeAsync();
+        await ResultOnClick.InvokeAsync(false);
     }
 
     private async Task PlayENButtonOnClick()

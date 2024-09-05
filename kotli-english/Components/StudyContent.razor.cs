@@ -8,6 +8,7 @@ public partial class StudyContent
 {
     private StudyContentState _currentState = StudyContentState.QUESTION;
     private Words? _word;
+    private bool _isStoreProgress = false;
 
     protected override async Task OnInitializedAsync()
     {
@@ -23,8 +24,9 @@ public partial class StudyContent
         _currentState = StudyContentState.ANSWER;
     }
 
-    private async Task AnswerWordCardOnClick()
+    private async Task AnswerWordCardOnClick(bool isOk)
     {
+        FlashcardService.Response(isOk);
         if (FlashcardService.CanGoNextWord())
         {
             _currentState = StudyContentState.QUESTION;
@@ -32,8 +34,10 @@ public partial class StudyContent
         }
         else
         {
-            await FlashcardService.SaveAsync();
             _currentState = StudyContentState.COMPLETE;
+            _isStoreProgress = true;
+            await FlashcardService.SaveAsync();
+            _isStoreProgress = false;
         }
     }
 }
