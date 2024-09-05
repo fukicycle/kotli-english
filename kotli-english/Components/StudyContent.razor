@@ -1,19 +1,26 @@
-﻿<div class="study">
-    @if (_showAnswer)
+﻿@inject IFlashcardService FlashcardService
+<div class="study">
+    @switch (_currentState)
     {
-        <Animate class="w-100 h-100" style="max-height: 560px;" Animation="Animations.Fade" @onclick=@(() => _showAnswer =
-        false)>
-            <WordAnswerCard />
-        </Animate>
-    }
-    else
-    {
-        <Animate class="w-100" Animation="Animations.Fade" @onclick=@(() => _showAnswer = true)>
-            <WordCard />
-        </Animate>
+        case Entities.Models.StudyContentState.QUESTION:
+            @if (_word == null)
+            {
+                <Loader Message="単語を読み込み中" />
+            }
+            else
+            {
+                <Animate class="w-100" Animation="Animations.Fade">
+                    <WordCard Word="@_word.Word" PartOfSpeech="@_word.PartOfSpeech" NextButtonOnClick="WordCardOnClick" />
+                </Animate>
+            }
+            break;
+        case Entities.Models.StudyContentState.ANSWER:
+            <Animate class="w-100 h-100" style="max-height: 560px;" Animation="Animations.Fade">
+                <WordAnswerCard Word="@_word" ResultOnClick="AnswerWordCardOnClick" />
+            </Animate>
+            break;
+        case Entities.Models.StudyContentState.COMPLETE:
+            <div>今日の目標達成！</div>
+            break;
     }
 </div>
-
-@code {
-    private bool _showAnswer = false;
-}

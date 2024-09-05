@@ -3,7 +3,7 @@
     padding: var(--space-4);
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: auto minmax(0, 1fr);
+    grid-template-rows: auto auto minmax(0, 1fr);
     grid-gap: var(--space-8);
 }
 
@@ -30,7 +30,14 @@
     color: var(--color-white);
 }
 
+.count {
+    font-size: 12px;
+    text-align: right;
+}
+
 .list {
+    height: 100%;
+    overflow: auto;
     position: relative;
     display: flex;
     flex-direction: column;
