@@ -54,17 +54,24 @@ section {
 
 .word-jp {
     text-align: center;
-    font-size: 36px;
+    font-size: 24px;
     font-weight: 600;
 }
 
 .caption {
     font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .sentence {
     width: 100%;
     padding: 0 var(--space-8);
+}
+
+.sentence:last-child {
+    font-size: 14px;
 }
 
 .action {
