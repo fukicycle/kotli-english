@@ -7,6 +7,7 @@ namespace kotli_english.Pages;
 public partial class Home
 {
     [Parameter]
+    [SupplyParameterFromQuery(Name = "user-id")]
     public Guid UserId { get; set; } = Guid.Empty;
 
     private bool _isNewUser = false;
@@ -27,5 +28,10 @@ public partial class Home
         {
             _isNewUser = true;
         }
+    }
+
+    private async Task CopyUserIdButtonOnClick()
+    {
+        await ClipboardService.CopyToClipboardAsync(_user!.UserId);
     }
 }
