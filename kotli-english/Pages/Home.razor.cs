@@ -26,11 +26,6 @@ public partial class Home
         else
         {
             _isNewUser = true;
-            //welcome page???
-            //test add user.
-            //TODO
-            // await UserService.RegisterNewUserAsync();
-            // NavigationManager.NavigateTo("", true);
         }
     }
 }

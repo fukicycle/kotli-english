@@ -28,7 +28,7 @@ public partial class WordAnswerCard
             Text = Word.ExampleSentence,
             Lang = "en-US", // BCP 47 language tag
             Pitch = 0.3, // 0.0 ~ 2.0 (Default 1.0)
-            Rate = 1.1, // 0.1 ~ 10.0 (Default 1.0)
+            Rate = 0.6, // 0.1 ~ 10.0 (Default 1.0)
             Volume = 1.0 // 0.0 ~ 1.0 (Default 1.0)
         };
         await SpeechSynthesis.SpeakAsync(utterancet);
