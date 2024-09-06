@@ -1,0 +1,36 @@
+.welcome {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-16);
+}
+
+.title {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.choice {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+}
+
+.head {
+    font-size: 18px;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.or {
+    text-align: center;
+}
+
+.attention {
+    font-size: 12px;
+}

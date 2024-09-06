@@ -9,4 +9,5 @@ public interface IUserService
     Task RegisterNewUserAsync();
     Task<Users> GetUserAsync();
     Task<bool> IsExistsAsync();
+    Task SetUserIdFromQueryAsync(Guid userId);
 }

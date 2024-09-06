@@ -1,17 +1,28 @@
 ﻿@page "/"
 @inject IUserService UserService
-@inject NavigationManager NavigationManager
-
+@inject IClipboardService ClipboardService
 <PageTitle>Home</PageTitle>
 <Animate Animation="Animations.Fade" class="animation-container">
-    @if (_user == null)
+    @if (!_isNewUser)
     {
-        <Loader Message="ユーザ情報を確認しています" />
-    }
-    else
-    {
-        <div>@_user.UserId</div>
-        <div>@_user.Nickname</div>
-        <div>@_user.CurrentLevel</div>
+        @if (_user == null)
+        {
+            <Loader Message="ユーザ情報を確認しています" />
+        }
+        else
+        {
+            <div>@_user.UserId</div>
+            <button @onclick=@CopyUserIdButtonOnClick>移行用IDをコピー</button>
+            <div>@_user.Nickname</div>
+            <div>@_user.CurrentLevel</div>
+        }
     }
 </Animate>
+@if (_isNewUser)
+{
+    <div class="dialog-background">
+    <div class="dialog">
+        <Welcome />
+    </div>
+</div>
+}

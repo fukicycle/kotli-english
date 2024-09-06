@@ -37,5 +37,8 @@
 button {
     outline: none;
     border: none;
-    background-color: transparent;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    padding: 0;
 }

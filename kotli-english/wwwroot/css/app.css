@@ -9,6 +9,40 @@
 button {
     -webkit-appearance: none;
     appearance: none;
+
+    background: rgba(242, 242, 242, 0.46);
+    backdrop-filter: blur(19.2px);
+    -webkit-backdrop-filter: blur(19.2px);
+    border: solid 1px rgba(242, 242, 242, 0.66);
+    border-radius: var(--space-4);
+
+    padding: var(--space-4) var(--space-16);
+    color: var(--color-white);
+    font-size: 16px;
+}
+
+button:active {
+    border: solid 1px transparent;
+}
+
+input {
+    width: 100%;
+    padding: var(--space-8);
+    color: var(--color-white);
+    font-size: 16px;
+
+    background: rgba(242, 242, 242, 0.46);
+    backdrop-filter: blur(19.2px);
+    -webkit-backdrop-filter: blur(19.2px);
+    border: solid 1px rgba(242, 242, 242, 0.66);
+    border-radius: var(--space-4);
+    outline: none;
+    box-shadow: 0 0 4px 4px rgba(0, 0, 0, .2) inset;
+    text-align: center;
+}
+
+input::placeholder {
+    color: rgba(242, 242, 242, .8);
 }
 
 html,
@@ -77,10 +111,10 @@ body {
     overflow: auto;
     padding: var(--space-32);
 
-    background: rgba(242, 242, 242, 0.56);
+    background: rgba(6, 39, 72, 0.56);
     backdrop-filter: blur(19.2px);
     -webkit-backdrop-filter: blur(19.2px);
-    border: solid 1px rgba(242, 242, 242, 0.56);
+    border: solid 2px rgba(6, 39, 72, 0.66);
     border-radius: var(--space-4);
 }
 

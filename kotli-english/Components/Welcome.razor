@@ -1,0 +1,46 @@
+﻿@inject IUserService UserService
+@inject NavigationManager NavigationManager
+<div class="welcome">
+    <div class="title">ようこそ<br />
+        ことり英語へ！</div>
+    <div class="description">英語をもっと気軽に勉強したい。そんなあなたにお届けする「ことり英語」。<br />
+        めんどうなアカウント登録もボタンひとつで完了。Webアプリだからどこからでも使える。毎日10問一緒に頑張ってみませんか？<br />
+        機能はゆっくり追加していきます！！！
+    </div>
+    <div class="choice">
+        <div class="item">
+            <div class="head">新規利用はこちらから</div>
+            <button @onclick=@NewUserButtonOnClick>始める！</button>
+        </div>
+        <div class="or">or</div>
+        <div class="item">
+            <div class="head">過去利用していた方はこちらから</div>
+            <input @bind=@userId type="text" placeholder="移行用ID" />
+            <button @onclick=@TransferButtonOnClick>続きから！</button>
+            <div class="attention">※学習履歴のみ引き継ぎます。単語の出題順は引き継がれません。</div>
+        </div>
+    </div>
+</div>
+@code {
+    private string? userId { get; set; }
+
+    private async Task NewUserButtonOnClick()
+    {
+        await UserService.RegisterNewUserAsync();
+        NavigationManager.NavigateTo("", true);
+    }
+
+    private async Task TransferButtonOnClick()
+    {
+        if (string.IsNullOrEmpty(userId) || string.IsNullOrWhiteSpace(userId))
+        {
+            return;
+        }
+        if (!Guid.TryParse(userId, out Guid id))
+        {
+            return;
+        }
+        await UserService.SetUserIdFromQueryAsync(id);
+        NavigationManager.NavigateTo("", true);
+    }
+}

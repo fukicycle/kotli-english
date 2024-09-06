@@ -1,10 +1,16 @@
 
 using kotli_english.Entities.Schemes;
+using Microsoft.AspNetCore.Components;
 
 namespace kotli_english.Pages;
 
 public partial class Home
 {
+    [Parameter]
+    [SupplyParameterFromQuery(Name = "user-id")]
+    public Guid UserId { get; set; } = Guid.Empty;
+
+    private bool _isNewUser = false;
     private Users? _user;
     protected override async Task OnInitializedAsync()
     {
@@ -13,13 +19,19 @@ public partial class Home
         {
             _user = await UserService.GetUserAsync();
         }
+        else if (UserId != Guid.Empty)
+        {
+            await UserService.SetUserIdFromQueryAsync(UserId);
+            _user = await UserService.GetUserAsync();
+        }
         else
         {
-            //welcome page???
-            //test add user.
-            //TODO
-            await UserService.RegisterNewUserAsync();
-            NavigationManager.NavigateTo("", true);
+            _isNewUser = true;
         }
+    }
+
+    private async Task CopyUserIdButtonOnClick()
+    {
+        await ClipboardService.CopyToClipboardAsync(_user!.UserId);
     }
 }

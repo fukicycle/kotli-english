@@ -48,4 +48,10 @@ public sealed class UserService : IUserService
         );
         await _localStorageService.SetItemAsync(USER_ID_STORAGE_KEY, id);
     }
+
+    public async Task SetUserIdFromQueryAsync(Guid userId)
+    {
+        UserId = userId;
+        await _localStorageService.SetItemAsync(USER_ID_STORAGE_KEY, UserId);
+    }
 }
