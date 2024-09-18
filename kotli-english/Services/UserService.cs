@@ -14,12 +14,14 @@ public sealed class UserService : IUserService
     private readonly ILocalStorageService _localStorageService;
     private readonly HttpClient _httpClient;
     private readonly ILogger<UserService> _logger;
-    public UserService(IUserRepository userRepository, ILocalStorageService localStorageService, IHttpClientFactory clientFactory, ILogger<UserService> logger)
+    private readonly RegexService _regexService;
+    public UserService(IUserRepository userRepository, ILocalStorageService localStorageService, IHttpClientFactory clientFactory, ILogger<UserService> logger, RegexService regexService)
     {
         _userRepository = userRepository;
         _localStorageService = localStorageService;
         _httpClient = clientFactory.CreateClient("RandomUser");
         _logger = logger;
+        _regexService = regexService;
     }
 
     public Guid UserId { get; private set; } = Guid.Empty;
@@ -60,7 +62,8 @@ public sealed class UserService : IUserService
     {
         var response = await _httpClient.GetAsync("");
         string content = await response.Content.ReadAsStringAsync();
-        string value = Regex.Match(content, "\"username\":\"*\"").Value;
+        string value = _regexService.GetStringBetweenKeywords(content, "\"username\"", "\"");
+        _logger.LogInformation(value);
         string[] keyValues = value.Split(":");
         if (keyValues.Count() != 2)
         {

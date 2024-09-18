@@ -26,5 +26,6 @@ builder.Services.AddScoped<IWordService, WordService>();
 builder.Services.AddScoped<IFlashcardService, FlashcardService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IClipboardService, ClipboardService>();
+builder.Services.AddScoped<RegexService>();
 
 await builder.Build().RunAsync();
