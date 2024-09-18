@@ -69,7 +69,6 @@ public sealed class UserService : IUserService
         }
         return keyValues[1].Replace("\"", "");
     }
-
     public async Task SetUserIdFromQueryAsync(Guid userId)
     {
         UserId = userId;
