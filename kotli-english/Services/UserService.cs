@@ -62,15 +62,14 @@ public sealed class UserService : IUserService
     {
         var response = await _httpClient.GetAsync("");
         string content = await response.Content.ReadAsStringAsync();
-        string value = _regexService.GetStringBetweenKeywords(content, "\"username\"", "\"");
+        string value = _regexService.GetStringBetweenKeywords(content, "\"username\":\"", "\"");
         _logger.LogInformation(value);
-        string[] keyValues = value.Split(":");
-        if (keyValues.Count() != 2)
+        if (string.IsNullOrEmpty(value))
         {
             _logger.LogError("ユーザ名の生成に失敗しました。");
             return "New user";
         }
-        return keyValues[1].Replace("\"", "");
+        return value;
     }
     public async Task SetUserIdFromQueryAsync(Guid userId)
     {

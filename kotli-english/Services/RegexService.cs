@@ -7,7 +7,7 @@ public class RegexService
 {
     public string GetStringBetweenKeywords(string source, string front, string behind)
     {
-        var pattern = $"({front})(?<g>.*)({behind})";
+        var pattern = $"({front})(?<g>.*?)({behind})";
 
         var options = RegexOptions.IgnoreCase;
 
