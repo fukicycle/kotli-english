@@ -3,7 +3,6 @@
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: 56px minmax(0, 1fr) 80px;
-    grid-gap: var(--space-4);
 }
 
 main {

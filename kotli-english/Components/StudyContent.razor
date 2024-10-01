@@ -30,7 +30,7 @@
             }
             break;
     }
-    @if (_currentState == Entities.Models.StudyContentState.QUESTION)
+    @if (_currentState == Entities.Models.StudyContentState.QUESTION && _word != null)
     {
         <div class="next">
             <button @onclick=WordCardOnClick>

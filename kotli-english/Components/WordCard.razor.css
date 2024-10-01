@@ -38,4 +38,5 @@ button {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     padding: 0;
+    box-shadow: none;
 }
