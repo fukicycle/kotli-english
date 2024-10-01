@@ -85,7 +85,7 @@ public sealed class UserService : IUserService
 
     private async Task<string[]> GetCsvDataAsync(string csvFileName)
     {
-        var response = await _httpClient.GetAsync($"/csv/{csvFileName}");
+        var response = await _httpClient.GetAsync($"csv/{csvFileName}");
         Stream content = await response.Content.ReadAsStreamAsync();
         StreamReader sr = new StreamReader(content);
         string csv = await sr.ReadToEndAsync();
