@@ -150,14 +150,23 @@ public sealed class FlashcardService : IFlashcardService
                 {
                     ng = 1;
                 }
-                progress = new Progress(response.Word.WordId, DateTime.Now, ok, ng, 1);
+                progress = new Progress(response.Word.WordId, DateTime.Now, ok, ng, 0);
             }
             else
             {
+                int tmpOk = progress.CorrectResponses;
                 ok = progress.CorrectResponses;
                 ng = progress.IncorrectResponses;
+                if (response.IsOk)
+                {
+                    ok++;
+                }
+                else
+                {
+                    ng++;
+                }
                 int master = progress.MasteryLevel;
-                if (ok % 3 == 0)
+                if (ok % 2 == 0 && tmpOk != ok)
                 {
                     master++;
                 }
