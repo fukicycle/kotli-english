@@ -12,13 +12,17 @@
         else
         {
             <div class="wrapper">
-                <UserCard User="@_user" />
+                <UserCard User="@_user" UserLevel="@_userLevel" />
                 <button @onclick=@CopyUserIdButtonOnClick>移行用IDをコピー</button>
                 <div class="progress">
-                    <ProgressCard Parameter="学習済み単語数" Value="200/200" ProgressValue="100" />
-                    <ProgressCard Parameter="習熟レベル１" Value="64/200" ProgressValue="32" />
-                    <ProgressCard Parameter="習熟レベル２" Value="40/200" ProgressValue="20" />
-                    <ProgressCard Parameter="習熟レベル３" Value="20/200" ProgressValue="10" />
+                    <ProgressCard Parameter="学習済み単語数" Value="@($"{_studyWordCount}/{_totalWordCount}")"
+                        ProgressValue="@(_studyWordCount * 100/_totalWordCount)" />
+                    <ProgressCard Parameter="習熟レベル１" Value="@($"{_master1Count}/{_totalWordCount}")"
+                        ProgressValue="@(_master1Count * 100/_totalWordCount)" />
+                    <ProgressCard Parameter="習熟レベル２" Value="@($"{_master2Count}/{_totalWordCount}")"
+                        ProgressValue="@(_master2Count * 100/_totalWordCount)" />
+                    <ProgressCard Parameter="習熟レベル３" Value="@($"{_master3Count}/{_totalWordCount}")"
+                        ProgressValue="@(_master3Count * 100/_totalWordCount)" />
                 </div>
             </div>
         }

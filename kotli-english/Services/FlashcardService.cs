@@ -150,7 +150,7 @@ public sealed class FlashcardService : IFlashcardService
                 {
                     ng = 1;
                 }
-                progress = new Progress(response.Word.WordId, DateTime.Now, ok, ng, 0);
+                progress = new Progress(response.Word.WordId, DateTime.Now, ok, ng, ok);
             }
             else
             {

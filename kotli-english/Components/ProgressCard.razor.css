@@ -25,22 +25,10 @@
 }
 
 .progress-item {
-    padding: 1px;
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    /* Frame 27 */
-
-    box-sizing: border-box;
-
-    /* Auto layout */
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: var(--space-8);
-    gap: var(--space-8);
 
     background: rgba(101, 128, 62, 1);
     backdrop-filter: blur(28.2px);
