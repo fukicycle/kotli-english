@@ -1,0 +1,35 @@
+﻿<div class="progress-card">
+    <div class="progress-item" style="height: @ProgressValue%;">
+        @* <div class="progress">@ProgressValue%</div> *@
+    </div>
+    <div class="contents">
+        <div class="parameter">@Parameter</div>
+        <div class="value">@Value</div>
+    </div>
+    @if (ProgressValue == 100)
+    {
+        <div class="complete">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <mask id="mask0_129_52" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="1" y="1" width="26"
+                    height="26">
+                    <path
+                        d="M14 25.6667C15.5324 25.6686 17.05 25.3677 18.4658 24.7813C19.8815 24.1948 21.1674 23.3345 22.2495 22.2495C23.3345 21.1674 24.1948 19.8815 24.7813 18.4658C25.3677 17.05 25.6686 15.5324 25.6667 14C25.6686 12.4677 25.3677 10.95 24.7813 9.53434C24.1948 8.11862 23.3345 6.83273 22.2495 5.75055C21.1674 4.66564 19.8815 3.80526 18.4658 3.21883C17.05 2.63241 15.5324 2.33149 14 2.33338C12.4677 2.33149 10.95 2.63241 9.53434 3.21883C8.11862 3.80526 6.83273 4.66564 5.75055 5.75055C4.66564 6.83273 3.80526 8.11862 3.21883 9.53434C2.63241 10.95 2.33149 12.4677 2.33338 14C2.33149 15.5324 2.63241 17.05 3.21883 18.4658C3.80526 19.8815 4.66564 21.1674 5.75055 22.2495C6.83273 23.3345 8.11862 24.1948 9.53434 24.7813C10.95 25.3677 12.4677 25.6686 14 25.6667Z"
+                        fill="white" stroke="white" stroke-width="2.33333" stroke-linejoin="round" />
+                    <path d="M9.33337 14L12.8334 17.5L19.8334 10.5" stroke="black" stroke-width="2.33333"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </mask>
+                <g mask="url(#mask0_129_52)">
+                    <path d="M0 0H28V28H0V0Z" fill="#DCE02E" />
+                </g>
+            </svg>
+        </div>
+    }
+</div>
+@code {
+    [Parameter]
+    public string Parameter { get; set; } = null!;
+    [Parameter]
+    public string Value { get; set; } = null!;
+    [Parameter]
+    public int ProgressValue { get; set; } = 0;
+}

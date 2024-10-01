@@ -14,6 +14,12 @@
             <div class="wrapper">
                 <UserCard User="@_user" />
                 <button @onclick=@CopyUserIdButtonOnClick>移行用IDをコピー</button>
+                <div class="progress">
+                    <ProgressCard Parameter="学習済み単語数" Value="200/200" ProgressValue="100" />
+                    <ProgressCard Parameter="習熟レベル１" Value="64/200" ProgressValue="32" />
+                    <ProgressCard Parameter="習熟レベル２" Value="40/200" ProgressValue="20" />
+                    <ProgressCard Parameter="習熟レベル３" Value="20/200" ProgressValue="10" />
+                </div>
             </div>
         }
     }

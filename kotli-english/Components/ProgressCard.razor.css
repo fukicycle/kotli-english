@@ -1,0 +1,60 @@
+.progress-card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.contents {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    background: rgba(153, 204, 255, 0.33);
+    border: 1px solid rgba(153, 204, 255, 0.61);
+    box-shadow: 0px 4px 4px rgba(39, 71, 84, 0.25);
+    border-radius: var(--space-4);
+
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.progress-item {
+    padding: 1px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    /* Frame 27 */
+
+    box-sizing: border-box;
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: var(--space-8);
+    gap: var(--space-8);
+
+    background: rgba(101, 128, 62, 1);
+    backdrop-filter: blur(28.2px);
+    -webkit-backdrop-filter: blur(28.2px);
+    border-radius: var(--space-4);
+}
+
+.complete {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

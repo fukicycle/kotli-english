@@ -1,6 +1,7 @@
 .user-card {
     position: relative;
-    height: 180px;
+    height: 20vh;
+    min-height: 130px;
     width: 100%;
 
     /* Auto layout */

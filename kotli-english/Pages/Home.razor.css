@@ -1,8 +1,15 @@
 .wrapper {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: auto auto minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: auto auto minmax(0, 1fr);
     grid-gap: var(--space-8);
     height: 100%;
     padding: var(--space-8);
+}
+
+.progress {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    grid-gap: var(--space-8);
 }
