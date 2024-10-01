@@ -1,0 +1,31 @@
+﻿<div class="user-card">
+    @if (User == null)
+    {
+        <Loader Message="ユーザ情報を読み込んでいます" />
+    }
+    else
+    {
+        <div class="rank">
+            @for (int i = 0; i < User.CurrentLevel; i++)
+            {
+                <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19.7 17.5L21.5 7.5L15.2 10.5L12.5 7.5L9.8 10.5L3.5 7.5L5.3 17.5H19.7Z" fill="#DCE02E"
+                        stroke="#DCE02E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            }
+            @for (int j = 0; j < 5 - User.CurrentLevel; j++)
+            {
+                <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19.7 17.5L21.5 7.5L15.2 10.5L12.5 7.5L9.8 10.5L3.5 7.5L5.3 17.5H19.7Z" stroke="#99CCFF"
+                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            }
+        </div>
+        <div class="username">@User.Nickname</div>
+        <div class="register-date">@User.RegisterDateTime.ToString("yyyy-MM-dd")</div>
+    }
+</div>
+@code {
+    [Parameter]
+    public Users? User { get; set; }
+}

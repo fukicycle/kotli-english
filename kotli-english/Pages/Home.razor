@@ -11,10 +11,10 @@
         }
         else
         {
-            <div>@_user.UserId</div>
-            <button @onclick=@CopyUserIdButtonOnClick>移行用IDをコピー</button>
-            <div>@_user.Nickname</div>
-            <div>@_user.CurrentLevel</div>
+            <div class="wrapper">
+                <UserCard User="@_user" />
+                <button @onclick=@CopyUserIdButtonOnClick>移行用IDをコピー</button>
+            </div>
         }
     }
 </Animate>
