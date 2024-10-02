@@ -77,8 +77,8 @@ public sealed class UserService : IUserService
         string first = firstCsvData[Random.Shared.Next(0, firstCsvData.Length - 1)];
         string last = lastCsvData[Random.Shared.Next(0, lastCsvData.Length - 1)];
         string[] intValue = ints.OrderBy(a => Guid.NewGuid()).Take(3).Select(a => a.ToString()).ToArray();
-        string upperFirst = $"{Convert.ToString(first.ToUpper().First())}{string.Join("", first.TakeLast(first.Length - 2))}";
-        string upperLast = $"{Convert.ToString(last.ToUpper().First())}{string.Join("", last.TakeLast(last.Length - 2))}";
+        string upperFirst = $"{Convert.ToString(first.ToUpper().First())}{string.Join("", first.TakeLast(first.Length - 1))}";
+        string upperLast = $"{Convert.ToString(last.ToUpper().First())}{string.Join("", last.TakeLast(last.Length - 1))}";
         string nickname = $"{upperFirst}{upperLast}{string.Join("", intValue)}";
         return nickname;
     }

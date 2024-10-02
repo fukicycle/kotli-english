@@ -174,6 +174,7 @@ public sealed class FlashcardService : IFlashcardService
             }
             await _progressRepository.AddProgressAsync(_userService.UserId, progress);
         }
+        _userResponse.Clear();
     }
 
     public async Task ResetAsync()

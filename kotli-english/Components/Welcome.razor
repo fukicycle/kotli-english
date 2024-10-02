@@ -10,22 +10,26 @@
     <div class="choice">
         <div class="item">
             <div class="head">新規利用はこちらから</div>
-            <button @onclick=@NewUserButtonOnClick>始める！</button>
+            <button disabled="@_isLoading" @onclick=@NewUserButtonOnClick>@_buttonContent</button>
         </div>
         <div class="or">or</div>
         <div class="item">
             <div class="head">過去利用していた方はこちらから</div>
             <input @bind=@userId type="text" placeholder="移行用ID" />
-            <button @onclick=@TransferButtonOnClick>続きから！</button>
+            <button disabled="@_isLoading" @onclick=@TransferButtonOnClick>続きから！</button>
             <div class="attention">※学習履歴のみ引き継ぎます。単語の出題順は引き継がれません。</div>
         </div>
     </div>
 </div>
 @code {
     private string? userId { get; set; }
+    private bool _isLoading = false;
+    private string _buttonContent = "始める!";
 
     private async Task NewUserButtonOnClick()
     {
+        _buttonContent = "登録中...";
+        _isLoading = true;
         await UserService.RegisterNewUserAsync();
         NavigationManager.NavigateTo("", true);
     }
