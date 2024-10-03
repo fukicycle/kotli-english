@@ -22,7 +22,7 @@
         case Entities.Models.StudyContentState.COMPLETE:
             @if (_isStoreProgress)
             {
-                <Loader Message="結果を保存中" />
+                <Loader Message="@_loaderMessage" />
             }
             else
             {

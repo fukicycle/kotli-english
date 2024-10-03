@@ -13,7 +13,7 @@ public interface IFlashcardService
     bool CanGoNextWord();
     bool CanGoNextFlashcard();
     Task LoadAsync();
-    Task SaveAsync();
+    Task SaveAsync(Action<int, int> progressDelegator);
     Task ResetAsync();
     void Response(bool isOk);
 }

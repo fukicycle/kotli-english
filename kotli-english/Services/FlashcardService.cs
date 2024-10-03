@@ -125,7 +125,7 @@ public sealed class FlashcardService : IFlashcardService
         return _currentWord;
     }
 
-    public async Task SaveAsync()
+    public async Task SaveAsync(Action<int, int> progressDelegator)
     {
         if (_currentFlashcard == null)
         {
@@ -135,6 +135,8 @@ public sealed class FlashcardService : IFlashcardService
         FlashcardSettings flashcardSettings = new FlashcardSettings(CurrentFlashcardNumber, _flashcardList);
         await _localStorageService.SetItemAsync(STORAGE_KEY, flashcardSettings);
         IEnumerable<Progress> progressList = await _progressRepository.GetProgressListByUserIdAsync(_userService.UserId);
+        int total = _userResponse.Count;
+        int current = 1;
         foreach (var response in _userResponse)
         {
             Progress? progress = progressList.FirstOrDefault(a => a.WordId == response.Word.WordId);
@@ -172,6 +174,8 @@ public sealed class FlashcardService : IFlashcardService
                 }
                 progress = new Progress(response.Word.WordId, DateTime.Now, ok, ng, master);
             }
+            progressDelegator.Invoke(total, current);
+            current++;
             await _progressRepository.AddProgressAsync(_userService.UserId, progress);
         }
         _userResponse.Clear();
