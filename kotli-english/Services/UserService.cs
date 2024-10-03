@@ -41,7 +41,7 @@ public sealed class UserService : IUserService
         return UserId != Guid.Empty;
     }
 
-    public async Task RegisterNewUserAsync()
+    public async Task<Guid> RegisterNewUserAsync()
     {
         Guid id = Guid.NewGuid();
         string nickname = await GetRandomUserName();
@@ -56,6 +56,7 @@ public sealed class UserService : IUserService
             )
         );
         await _localStorageService.SetItemAsync(USER_ID_STORAGE_KEY, id);
+        return id;
     }
 
     private async Task<string> GetRandomUserName()

@@ -30,8 +30,9 @@
     {
         _buttonContent = "登録中...";
         _isLoading = true;
-        await UserService.RegisterNewUserAsync();
-        NavigationManager.NavigateTo("", true);
+        var id = await UserService.RegisterNewUserAsync();
+        string uri = NavigationManager.GetUriWithQueryParameter("user-id", id);
+        NavigationManager.NavigateTo(uri, true);
     }
 
     private async Task TransferButtonOnClick()
@@ -45,6 +46,7 @@
             return;
         }
         await UserService.SetUserIdFromQueryAsync(id);
-        NavigationManager.NavigateTo("", true);
+        string uri = NavigationManager.GetUriWithQueryParameter("user-id", id);
+        NavigationManager.NavigateTo(uri, true);
     }
 }
