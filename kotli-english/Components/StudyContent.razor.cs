@@ -9,6 +9,7 @@ public partial class StudyContent
     private StudyContentState _currentState = StudyContentState.QUESTION;
     private Words? _word;
     private bool _isStoreProgress = false;
+    private string _loaderMessage = "";
 
     protected override async Task OnInitializedAsync()
     {
@@ -36,8 +37,22 @@ public partial class StudyContent
         {
             _currentState = StudyContentState.COMPLETE;
             _isStoreProgress = true;
-            await Task.Run(FlashcardService.SaveAsync);
+            UpdateProgress(0, 0);
+            await Task.Run(() => FlashcardService.SaveAsync(UpdateProgress));
             _isStoreProgress = false;
         }
+    }
+
+    private void UpdateProgress(int total, int current)
+    {
+        if (total == 0 || current == 0)
+        {
+            _loaderMessage = "結果を保存中...";
+        }
+        else
+        {
+            _loaderMessage = $"結果を保存中...{current}/{total}";
+        }
+        StateHasChanged();
     }
 }
