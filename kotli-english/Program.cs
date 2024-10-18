@@ -8,6 +8,7 @@ using kotli_english.Repositories;
 using Blazored.LocalStorage;
 using Toolbelt.Blazor.Extensions.DependencyInjection;
 
+
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
@@ -29,4 +30,12 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IClipboardService, ClipboardService>();
 builder.Services.AddScoped<RegexService>();
 
-await builder.Build().RunAsync();
+builder.Services.AddScoped<IndexedDBAccessor>();
+var host = builder.Build();
+using var scope = host.Services.CreateScope();
+await using var indexedDB = scope.ServiceProvider.GetService<IndexedDBAccessor>();
+if (indexedDB is not null)
+{
+    await indexedDB.InitializeAsync();
+}
+await host.RunAsync();

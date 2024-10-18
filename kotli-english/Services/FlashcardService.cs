@@ -8,9 +8,8 @@ namespace kotli_english.Services;
 
 public sealed class FlashcardService : IFlashcardService
 {
-    private const string STORAGE_KEY = "995a2dde-8469-466d-992c-a04087537318_Flashcard_Settigns";
     private readonly IWordRepository _wordRepository;
-    private readonly ILocalStorageService _localStorageService;
+    private readonly IndexedDBAccessor _indexedDBAccessor;
     private readonly IProgressRepository _progressRepository;
     private readonly ILogger<FlashcardService> _logger;
     private readonly List<Flashcard> _flashcardList = new List<Flashcard>();
@@ -24,13 +23,13 @@ public sealed class FlashcardService : IFlashcardService
     private Words? _currentWord = null;
     public FlashcardService(
         IWordRepository wordRepository,
-        ILocalStorageService localStorageService,
+        IndexedDBAccessor indexedDBAccessor,
         IProgressRepository progressRepository,
         IUserService userService,
         ILogger<FlashcardService> logger)
     {
         _wordRepository = wordRepository;
-        _localStorageService = localStorageService;
+        _indexedDBAccessor = indexedDBAccessor;
         _progressRepository = progressRepository;
         _userService = userService;
         _logger = logger;
@@ -44,7 +43,8 @@ public sealed class FlashcardService : IFlashcardService
         }
         if (!_flashcardList.Any(a => a.Number == CurrentFlashcardNumber + 1))
         {
-            return false;
+            CurrentFlashcardNumber = 1;
+            return true;
         }
         return true;
     }
@@ -80,12 +80,12 @@ public sealed class FlashcardService : IFlashcardService
             }
         }
         FlashcardSettings flashcardSettings = new FlashcardSettings(CurrentFlashcardNumber, _flashcardList);
-        await _localStorageService.SetItemAsync(STORAGE_KEY, flashcardSettings);
+        await _indexedDBAccessor.SetValueAsync(IndexedDBSettings.COL_SETTING, IndexedDBSettings.KEY_FLASHCARD_SETTING, flashcardSettings);
     }
 
     public async Task LoadAsync()
     {
-        FlashcardSettings? flashcardSettings = await _localStorageService.GetItemAsync<FlashcardSettings>(STORAGE_KEY);
+        FlashcardSettings? flashcardSettings = await _indexedDBAccessor.GetValueAsync<FlashcardSettings>(IndexedDBSettings.COL_SETTING, IndexedDBSettings.KEY_FLASHCARD_SETTING);
         if (flashcardSettings == null)
         {
             await GenerateAsync();
@@ -131,9 +131,8 @@ public sealed class FlashcardService : IFlashcardService
         {
             throw new Exception("Current flash card is null.");
         }
-        CurrentFlashcardNumber++;
         FlashcardSettings flashcardSettings = new FlashcardSettings(CurrentFlashcardNumber, _flashcardList);
-        await _localStorageService.SetItemAsync(STORAGE_KEY, flashcardSettings);
+        await _indexedDBAccessor.SetValueAsync(IndexedDBSettings.COL_SETTING, IndexedDBSettings.KEY_FLASHCARD_SETTING, flashcardSettings);
         IEnumerable<Progress> progressList = await _progressRepository.GetProgressListByUserIdAsync(_userService.UserId);
         int total = _userResponse.Count;
         int current = 1;
@@ -185,7 +184,7 @@ public sealed class FlashcardService : IFlashcardService
     {
         _flashcardList.Clear();
         _userResponse.Clear();
-        await _localStorageService.RemoveItemAsync(STORAGE_KEY);
+        //await _localStorageService.RemoveItemAsync(STORAGE_KEY);
         await GenerateAsync();
     }
 
