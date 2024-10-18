@@ -39,4 +39,3 @@ if (indexedDB is not null)
     await indexedDB.InitializeAsync();
 }
 await host.RunAsync();
-//await builder.Build().RunAsync();
