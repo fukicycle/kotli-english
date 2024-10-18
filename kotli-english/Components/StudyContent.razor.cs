@@ -37,8 +37,10 @@ public partial class StudyContent
         {
             _currentState = StudyContentState.COMPLETE;
             _isStoreProgress = true;
+            StateHasChanged();
             UpdateProgress(0, 0);
-            await Task.Run(() => FlashcardService.SaveAsync(UpdateProgress));
+            //await Task.Run(() => FlashcardService.SaveAsync(UpdateProgress));
+            await FlashcardService.SaveAsync(UpdateProgress);
             _isStoreProgress = false;
         }
     }
