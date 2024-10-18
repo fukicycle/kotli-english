@@ -131,7 +131,6 @@ public sealed class FlashcardService : IFlashcardService
         {
             throw new Exception("Current flash card is null.");
         }
-        CurrentFlashcardNumber++;
         FlashcardSettings flashcardSettings = new FlashcardSettings(CurrentFlashcardNumber, _flashcardList);
         await _localStorageService.SetItemAsync(STORAGE_KEY, flashcardSettings);
         IEnumerable<Progress> progressList = await _progressRepository.GetProgressListByUserIdAsync(_userService.UserId);
