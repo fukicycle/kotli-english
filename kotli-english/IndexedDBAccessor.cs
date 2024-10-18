@@ -22,7 +22,7 @@ namespace kotli_english
         {
             if (_accessorJsRef.IsValueCreated is false)
             {
-                _accessorJsRef = new Lazy<IJSObjectReference>(await _jsRuntime.InvokeAsync<IJSObjectReference>("import", "js/indexedDBStorageAccessor.js"));
+                _accessorJsRef = new Lazy<IJSObjectReference>(await _jsRuntime.InvokeAsync<IJSObjectReference>("import", "./js/indexedDBStorageAccessor.js"));
             }
         }
         public async ValueTask DisposeAsync()
