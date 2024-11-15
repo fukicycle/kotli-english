@@ -4,6 +4,14 @@
   "id": "./",
   "start_url": "./",
   "display": "standalone",
+  "description": "英語学習をサポートするアプリです。英語のレベルはTOEIC600点程度です。",
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  "orientation": "any",
+  "dir": "auto",
+  "scope": "https://fukicycle.github.io/kotli-english/",
+  "lang": "ja",
   "background_color": "#0066CC",
   "theme_color": "#0066CC",
   "prefer_related_applications": false,
@@ -17,6 +25,34 @@
       "src": "icon-192.png",
       "type": "image/png",
       "sizes": "192x192"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshots/home.png",
+      "type": "image/png",
+      "label": "ホーム画面"
+    },
+    {
+      "src": "screenshots/study.png",
+      "type": "image/png",
+      "label": "学習画面"
+    },
+    {
+      "src": "screenshots/words.png",
+      "type": "image/png",
+      "label": "辞書画面"
+    }
+  ],
+  "categories": [ "study", "english", "lifestyle" ],
+  "shortcuts": [
+    {
+      "name": "勉強開始！",
+      "url": "study"
+    },
+    {
+      "name": "単語帳",
+      "url": "words"
     }
   ]
 }
