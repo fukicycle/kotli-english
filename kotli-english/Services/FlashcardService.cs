@@ -1,3 +1,4 @@
+using System.Collections.Immutable;
 using Blazored.LocalStorage;
 using kotli_english.Entities.Models;
 using kotli_english.Entities.Schemes;
@@ -12,7 +13,7 @@ public sealed class FlashcardService : IFlashcardService
     private readonly IndexedDBAccessor _indexedDBAccessor;
     private readonly IProgressRepository _progressRepository;
     private readonly ILogger<FlashcardService> _logger;
-    private readonly List<Flashcard> _flashcardList = new List<Flashcard>();
+    private ImmutableList<Flashcard> _flashcardList = ImmutableList<Flashcard>.Empty;
     private readonly List<WordUserResponse> _userResponse = new List<WordUserResponse>();
     private readonly IUserService _userService;
     public int CurrentWordIndex { get; private set; } = 0;
@@ -69,16 +70,18 @@ public sealed class FlashcardService : IFlashcardService
         IEnumerable<Words> wordList = await _wordRepository.GetWordListAsync();
         List<Words> randomList = wordList.OrderBy(a => Random.Shared.Next()).ToList();
         int number = 1;
+        var tmpFlashcardList = new List<Flashcard>();
         while (randomList.Count() > 0)
         {
             var dailyWordList = randomList.Take(10).ToList();
-            _flashcardList.Add(new Flashcard(number++, dailyWordList));
+            tmpFlashcardList.Add(new Flashcard(number++, dailyWordList));
             foreach (var item in dailyWordList)
             {
                 randomList.Remove(item);
                 _logger.LogInformation("Added and removed. {0}, remain: {1}", item.Word, randomList.Count);
             }
         }
+        _flashcardList = tmpFlashcardList.ToImmutableList();
         FlashcardSettings flashcardSettings = new FlashcardSettings(CurrentFlashcardNumber, _flashcardList);
         await _indexedDBAccessor.SetValueAsync(IndexedDBSettings.COL_SETTING, IndexedDBSettings.KEY_FLASHCARD_SETTING, flashcardSettings);
     }
@@ -94,7 +97,7 @@ public sealed class FlashcardService : IFlashcardService
         {
             CurrentFlashcardNumber = flashcardSettings.CurrentNumber;
             CurrentWordIndex = 0;
-            _flashcardList.AddRange(flashcardSettings.FlashcardList);
+            _flashcardList = flashcardSettings.FlashcardList;
         }
         if (CanGoNextFlashcard())
         {
@@ -184,7 +187,6 @@ public sealed class FlashcardService : IFlashcardService
     {
         _flashcardList.Clear();
         _userResponse.Clear();
-        //await _localStorageService.RemoveItemAsync(STORAGE_KEY);
         await GenerateAsync();
     }
 
