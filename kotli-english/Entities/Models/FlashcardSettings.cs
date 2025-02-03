@@ -4,11 +4,11 @@ namespace kotli_english.Entities.Models;
 
 public sealed class FlashcardSettings
 {
-    public FlashcardSettings(int currentNumber, ImmutableList<Flashcard> flashcardList)
+    public FlashcardSettings(int currentNumber, List<Flashcard> flashcardList)
     {
         CurrentNumber = currentNumber;
         FlashcardList = flashcardList;
     }
     public int CurrentNumber { get; }
-    public ImmutableList<Flashcard> FlashcardList { get; }
+    public List<Flashcard> FlashcardList { get; }
 }

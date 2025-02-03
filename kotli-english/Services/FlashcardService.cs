@@ -82,7 +82,7 @@ public sealed class FlashcardService : IFlashcardService
             }
         }
         _flashcardList = tmpFlashcardList.ToImmutableList();
-        FlashcardSettings flashcardSettings = new FlashcardSettings(CurrentFlashcardNumber, _flashcardList);
+        FlashcardSettings flashcardSettings = new FlashcardSettings(CurrentFlashcardNumber, _flashcardList.ToList());
         await _indexedDBAccessor.SetValueAsync(IndexedDBSettings.COL_SETTING, IndexedDBSettings.KEY_FLASHCARD_SETTING, flashcardSettings);
     }
 
@@ -97,7 +97,7 @@ public sealed class FlashcardService : IFlashcardService
         {
             CurrentFlashcardNumber = flashcardSettings.CurrentNumber;
             CurrentWordIndex = 0;
-            _flashcardList = flashcardSettings.FlashcardList;
+            _flashcardList = flashcardSettings.FlashcardList.ToImmutableList();
         }
         if (CanGoNextFlashcard())
         {
@@ -134,7 +134,7 @@ public sealed class FlashcardService : IFlashcardService
         {
             throw new Exception("Current flash card is null.");
         }
-        FlashcardSettings flashcardSettings = new FlashcardSettings(CurrentFlashcardNumber, _flashcardList);
+        FlashcardSettings flashcardSettings = new FlashcardSettings(CurrentFlashcardNumber, _flashcardList.ToList());
         await _indexedDBAccessor.SetValueAsync(IndexedDBSettings.COL_SETTING, IndexedDBSettings.KEY_FLASHCARD_SETTING, flashcardSettings);
         IEnumerable<Progress> progressList = await _progressRepository.GetProgressListByUserIdAsync(_userService.UserId);
         int total = _userResponse.Count;
