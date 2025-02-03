@@ -11,18 +11,31 @@ public partial class StudyContent
     private bool _isStoreProgress = false;
     private string _loaderMessage = "";
 
-    protected override async Task OnInitializedAsync()
+    private async Task InitializeAsync()
     {
-        await Task.Run(async () => await FlashcardService.LoadAsync());
+        await FlashcardService.LoadAsync();
         if (FlashcardService.CanGoNextWord())
         {
             _word = FlashcardService.NextWord();
         }
+        _currentState = StudyContentState.QUESTION;
     }
 
-    private void WordCardOnClick()
+    protected override async Task OnInitializedAsync()
     {
-        _currentState = StudyContentState.ANSWER;
+        await InitializeAsync();
+    }
+
+    private async Task NextButtonOnClick()
+    {
+        if (_currentState == StudyContentState.COMPLETE)
+        {
+            await InitializeAsync();
+        }
+        else
+        {
+            _currentState = StudyContentState.ANSWER;
+        }
     }
 
     private async Task AnswerWordCardOnClick(bool isOk)
@@ -39,7 +52,6 @@ public partial class StudyContent
             _isStoreProgress = true;
             StateHasChanged();
             UpdateProgress(0, 0);
-            //await Task.Run(() => FlashcardService.SaveAsync(UpdateProgress));
             await FlashcardService.SaveAsync(UpdateProgress);
             _isStoreProgress = false;
         }

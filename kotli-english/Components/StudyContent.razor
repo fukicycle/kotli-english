@@ -30,10 +30,11 @@
             }
             break;
     }
-    @if (_currentState == Entities.Models.StudyContentState.QUESTION && _word != null)
+    @if ((_currentState == Entities.Models.StudyContentState.QUESTION || _currentState ==
+    Entities.Models.StudyContentState.COMPLETE) && _word != null)
     {
         <div class="next">
-            <button @onclick=WordCardOnClick>
+            <button @onclick="NextButtonOnClick">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_96_277)">
                         <path
