@@ -15,6 +15,15 @@ public sealed class ProgressRepository : IProgressRepository
         _client = firebaseClientService.Client;
         _userRepository = userRepository;
     }
+
+    public async Task UpdateProgressAsync(Guid userId, Progress progress)
+    {
+        Users user = await _userRepository.GetUserByIdAsync(userId.ToString());
+        //一度全ての履歴を消す。
+        user.Progress.RemoveAll(a => a.WordId == progress.WordId);
+        user.Progress.Add(progress);
+        await _client.Child(SCHEME_NAME).Child(userId.ToString()).PutAsync(user);
+    }
     public async Task AddProgressAsync(Guid userId, Progress progress)
     {
         Users user = await _userRepository.GetUserByIdAsync(userId.ToString());

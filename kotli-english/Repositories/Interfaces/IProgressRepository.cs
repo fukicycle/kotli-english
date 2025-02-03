@@ -6,4 +6,5 @@ public interface IProgressRepository
     Task<IEnumerable<Progress>> GetProgressListByUserIdAsync(Guid userId);
     Task<Progress?> GetProgressByUserIdAndWordIdAsync(Guid userId, Guid wordId);
     Task AddProgressAsync(Guid userId, Progress progress);
+    Task UpdateProgressAsync(Guid userId, Progress progress);
 }

@@ -155,6 +155,7 @@ public sealed class FlashcardService : IFlashcardService
                     ng = 1;
                 }
                 progress = new Progress(response.Word.WordId, DateTime.Now, ok, ng, ok);
+                await _progressRepository.AddProgressAsync(_userService.UserId, progress);
             }
             else
             {
@@ -175,10 +176,10 @@ public sealed class FlashcardService : IFlashcardService
                     master++;
                 }
                 progress = new Progress(response.Word.WordId, DateTime.Now, ok, ng, master);
+                await _progressRepository.UpdateProgressAsync(_userService.UserId, progress);
             }
             progressDelegator.Invoke(total, current);
             current++;
-            await _progressRepository.AddProgressAsync(_userService.UserId, progress);
         }
         _userResponse.Clear();
     }
