@@ -961,7 +961,7 @@ string id = "50072a35-6596-43f5-9d74-7a934fb644fc";
 // await repo.AddUserAsync(new Users(id, DateTime.Now, "hoge", 2, Enumerable.Empty<Progress>().ToList()));
 IProgressRepository pro = new ProgressRepository(new FirebaseClientService(), repo);
 var hgoe = await pro.GetProgressListByUserIdAsync(Guid.Parse(id));
-Console.WriteLine(string.Join(",", hgoe.Select(a => a.WordId)));
+Console.WriteLine(string.Join(",", hgoe.Select(a => a.Value.WordId)));
 
 async Task InsertAsync(string csv)
 {
