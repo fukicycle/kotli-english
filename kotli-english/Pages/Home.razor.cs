@@ -39,9 +39,9 @@ public partial class Home
         if (_user != null)
         {
             _studyWordCount = _user.Progress.Count;
-            _master1Count = _user.Progress.Count(a => a.MasteryLevel == 1);
-            _master2Count = _user.Progress.Count(a => a.MasteryLevel == 2);
-            _master3Count = _user.Progress.Count(a => a.MasteryLevel >= 3);
+            _master1Count = _user.Progress.Count(a => a.Value.MasteryLevel == 1);
+            _master2Count = _user.Progress.Count(a => a.Value.MasteryLevel == 2);
+            _master3Count = _user.Progress.Count(a => a.Value.MasteryLevel >= 3);
             if (_studyWordCount >= 10)
             {
                 _userLevel = 1;

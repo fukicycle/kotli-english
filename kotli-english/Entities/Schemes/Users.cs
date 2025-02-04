@@ -7,7 +7,7 @@ public sealed class Users
         DateTime registerDateTime,
         string profileImageUrl,
         int currentLevel,
-        List<Progress> progress
+        Dictionary<Guid, Progress> progress
     )
     {
         UserId = userId;
@@ -18,7 +18,7 @@ public sealed class Users
         Progress = progress;
         if (Progress == null)
         {
-            Progress = new List<Progress>();
+            Progress = new Dictionary<Guid, Progress>();
         }
     }
     public string UserId { get; } // firebase user id
@@ -26,5 +26,5 @@ public sealed class Users
     public DateTime RegisterDateTime { get; }
     public string ProfileImageUrl { get; }
     public int CurrentLevel { get; }
-    public List<Progress> Progress { get; }
+    public Dictionary<Guid, Progress> Progress { get; }
 }

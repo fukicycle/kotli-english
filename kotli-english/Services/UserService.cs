@@ -52,7 +52,7 @@ public sealed class UserService : IUserService
                 DateTime.Now,
                 "",
                 1,
-                Enumerable.Empty<Progress>().ToList()
+                new Dictionary<Guid, Progress>()
             )
         );
         await _localStorageService.SetItemAsync(USER_ID_STORAGE_KEY, id);
