@@ -136,12 +136,11 @@ public sealed class FlashcardService : IFlashcardService
         }
         FlashcardSettings flashcardSettings = new FlashcardSettings(CurrentFlashcardNumber, _flashcardList.ToList());
         await _indexedDBAccessor.SetValueAsync(IndexedDBSettings.COL_SETTING, IndexedDBSettings.KEY_FLASHCARD_SETTING, flashcardSettings);
-        IEnumerable<Progress> progressList = await _progressRepository.GetProgressListByUserIdAsync(_userService.UserId);
         int total = _userResponse.Count;
         int current = 1;
         foreach (var response in _userResponse)
         {
-            Progress? progress = progressList.FirstOrDefault(a => a.WordId == response.Word.WordId);
+            Progress? progress = await _progressRepository.GetProgressByUserIdAndWordIdAsync(_userService.UserId,response.Word.WordId);
             int ok = 0;
             int ng = 0;
             if (progress == default)
@@ -155,7 +154,7 @@ public sealed class FlashcardService : IFlashcardService
                     ng = 1;
                 }
                 progress = new Progress(response.Word.WordId, DateTime.Now, ok, ng, ok);
-                await _progressRepository.AddProgressAsync(_userService.UserId, progress);
+                await _progressRepository.UpdateProgressAsync(_userService.UserId, progress);
             }
             else
             {
