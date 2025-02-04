@@ -30,8 +30,10 @@
             }
             break;
     }
-    @if ((_currentState == Entities.Models.StudyContentState.QUESTION || _currentState ==
-    Entities.Models.StudyContentState.COMPLETE) && _word != null)
+    @if ((_currentState == Entities.Models.StudyContentState.QUESTION || 
+            _currentState == Entities.Models.StudyContentState.COMPLETE) &&
+             _word != null
+             && !_isStoreProgress)
     {
         <div class="next">
             <button @onclick="NextButtonOnClick">
