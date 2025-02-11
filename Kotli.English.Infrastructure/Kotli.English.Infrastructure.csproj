@@ -5,14 +5,16 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
+  <ItemGroup>
+    <PackageReference Include="FirebaseDatabase.net" Version="4.2.0" />
+  </ItemGroup>
+  
   <ItemGroup>
     <ProjectReference Include="../Kotli.English.Domain/Kotli.English.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Fake/" />
-    <Folder Include="Firebase/" />
   </ItemGroup>
 
 </Project>
