@@ -10,4 +10,9 @@
     <ProjectReference Include="../Kotli.English.Domain/Kotli.English.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Fake/" />
+    <Folder Include="Firebase/" />
+  </ItemGroup>
+
 </Project>
