@@ -4,6 +4,15 @@ namespace Kotli.English.Domain.ValueObjects;
 
 public sealed class UserId : ValueObject<UserId>
 {
+    public UserId(Guid value)
+    {
+        if (value == Guid.Empty)
+        {
+            throw new UserIdException("ユーザIDが空です。");
+        }
+        Value = value;
+        ValueStr = value.ToString();
+    }
     public UserId(string value)
     {
         if (!Guid.TryParse(value, out Guid tmp))
