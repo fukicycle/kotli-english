@@ -29,6 +29,7 @@
 
   <ItemGroup>
     <ProjectReference Include="../Kotli.English.Domain/Kotli.English.Domain.csproj" />
+    <ProjectReference Include="../Kotli.English.Infrastructure/Kotli.English.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
