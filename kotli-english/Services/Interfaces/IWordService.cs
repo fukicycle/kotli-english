@@ -1,5 +1,4 @@
-using System;
-using kotli_english.Entities.Schemes;
+using Kotli.English.Domain.Entities.Schemes;
 
 namespace kotli_english.Services.Interfaces;
 

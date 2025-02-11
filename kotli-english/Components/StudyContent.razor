@@ -2,7 +2,7 @@
 <div class="study">
     @switch (_currentState)
     {
-        case Entities.Models.StudyContentState.QUESTION:
+        case StudyContentState.QUESTION:
             @if (_word == null)
             {
                 <Loader Message="単語を読み込み中" />
@@ -14,12 +14,12 @@
                 </Animate>
             }
             break;
-        case Entities.Models.StudyContentState.ANSWER:
+        case StudyContentState.ANSWER:
             <Animate class="w-100 h-100" style="max-height: 560px;" Animation="Animations.Fade">
                 <WordAnswerCard Word="@_word" ResultOnClick="AnswerWordCardOnClick" />
             </Animate>
             break;
-        case Entities.Models.StudyContentState.COMPLETE:
+        case StudyContentState.COMPLETE:
             @if (_isStoreProgress)
             {
                 <Loader Message="@_loaderMessage" />
@@ -30,10 +30,11 @@
             }
             break;
     }
-    @if ((_currentState == Entities.Models.StudyContentState.QUESTION || 
-            _currentState == Entities.Models.StudyContentState.COMPLETE) &&
-             _word != null
-             && !_isStoreProgress)
+    @if ((_currentState == StudyContentState.QUESTION ||
+        _currentState == StudyContentState.COMPLETE) &&
+        _word != null
+        && !_isStoreProgress)
+
     {
         <div class="next">
             <button @onclick="NextButtonOnClick">

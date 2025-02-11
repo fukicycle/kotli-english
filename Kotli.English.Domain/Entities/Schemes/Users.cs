@@ -1,4 +1,5 @@
-namespace kotli_english.Entities.Schemes;
+namespace Kotli.English.Domain.Entities.Schemes;
+
 public sealed class Users
 {
     public Users(

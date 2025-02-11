@@ -1,6 +1,5 @@
 
-using System.Net.NetworkInformation;
-using kotli_english.Entities.Schemes;
+using Kotli.English.Domain.Entities.Schemes;
 using Microsoft.AspNetCore.Components;
 
 namespace kotli_english.Pages;

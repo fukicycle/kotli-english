@@ -1,9 +1,8 @@
 ﻿using Firebase.Database.Query;
-using kotli_english.Entities.Schemes;
+using Kotli.English.Domain.Entities.Schemes;
 using kotli_english.Repositories;
 using kotli_english.Repositories.Interfaces;
 using kotli_english.Services;
-using Microsoft.AspNetCore.Components;
 
 string csv1 = $@"achievement,達成,noun,Winning the award was a significant achievement.,賞を受賞することは重要な達成でした。
 agreement,協定、合意,noun,They reached an agreement after long negotiations.,長い交渉の末、彼らは合意に達しました。
@@ -963,6 +962,7 @@ IProgressRepository pro = new ProgressRepository(new FirebaseClientService(), re
 var hgoe = await pro.GetProgressListByUserIdAsync(Guid.Parse(id));
 Console.WriteLine(string.Join(",", hgoe.Select(a => a.Value.WordId)));
 
+#pragma warning disable CS8321 // Local function is declared but never used
 async Task InsertAsync(string csv)
 {
     int count = 1;
@@ -982,7 +982,9 @@ async Task InsertAsync(string csv)
         Console.WriteLine("{0} {1}", count++, cols[0]);
     }
 }
+#pragma warning restore CS8321 // Local function is declared but never used
 
+#pragma warning disable CS8321 // Local function is declared but never used
 async Task DeleteDuplicateAsync()
 {
     int count = 1;
@@ -996,3 +998,4 @@ async Task DeleteDuplicateAsync()
         Console.WriteLine("Deleted: {0} {1}", count++, id);
     }
 }
+#pragma warning restore CS8321 // Local function is declared but never used

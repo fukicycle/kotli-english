@@ -1,7 +1,7 @@
 using System.Text.RegularExpressions;
 using Blazored.LocalStorage;
 using Firebase.Database.Query;
-using kotli_english.Entities.Schemes;
+using Kotli.English.Domain.Entities.Schemes;
 using kotli_english.Repositories.Interfaces;
 using kotli_english.Services.Interfaces;
 

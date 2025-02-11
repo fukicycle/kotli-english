@@ -1,4 +1,4 @@
-using kotli_english.Entities.Schemes;
+using Kotli.English.Domain.Entities.Schemes;
 using Microsoft.AspNetCore.Components;
 using Toolbelt.Blazor.SpeechSynthesis;
 
