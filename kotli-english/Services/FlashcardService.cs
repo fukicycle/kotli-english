@@ -70,9 +70,13 @@ public sealed class FlashcardService : IFlashcardService
         List<Words> randomList = wordList.OrderBy(a => Random.Shared.Next()).ToList();
         int number = 1;
         var tmpFlashcardList = new List<Flashcard>();
-        while (randomList.Count() > 0)
+        while (true)
         {
             var dailyWordList = randomList.Take(10).ToList();
+            if (!dailyWordList.Any())
+            {
+                break;
+            }
             tmpFlashcardList.Add(new Flashcard(number++, dailyWordList));
             foreach (var item in dailyWordList)
             {
@@ -139,7 +143,7 @@ public sealed class FlashcardService : IFlashcardService
         int current = 1;
         foreach (var response in _userResponse)
         {
-            Progress? progress = await _progressRepository.GetProgressByUserIdAndWordIdAsync(_userService.UserId,response.Word.WordId);
+            Progress? progress = await _progressRepository.GetProgressByUserIdAndWordIdAsync(_userService.UserId, response.Word.WordId);
             int ok = 0;
             int ng = 0;
             if (progress == default)
