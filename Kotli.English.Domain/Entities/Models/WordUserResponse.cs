@@ -1,8 +1,6 @@
-using kotli_english.Entities.Schemes;
+using Kotli.English.Domain.Entities.Schemes;
 
-namespace kotli_english.Entities.Models;
-
-public sealed class WordUserResponse
+namespace Kotli.English.Domain.Entities.Models;public sealed class WordUserResponse
 {
     public WordUserResponse(bool isOk, Words word)
     {

@@ -1,7 +1,6 @@
 using System.Collections.Immutable;
-using Blazored.LocalStorage;
-using kotli_english.Entities.Models;
-using kotli_english.Entities.Schemes;
+using Kotli.English.Domain.Entities.Models;
+using Kotli.English.Domain.Entities.Schemes;
 using kotli_english.Repositories.Interfaces;
 using kotli_english.Services.Interfaces;
 

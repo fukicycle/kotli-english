@@ -27,4 +27,8 @@
     <Folder Include="wwwroot\screenshots\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="../Kotli.English.Domain/Kotli.English.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

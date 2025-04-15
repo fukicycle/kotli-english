@@ -1,6 +1,6 @@
 
-using kotli_english.Entities.Models;
-using kotli_english.Entities.Schemes;
+using Kotli.English.Domain.Entities.Models;
+using Kotli.English.Domain.Entities.Schemes;
 
 namespace kotli_english.Components;
 
